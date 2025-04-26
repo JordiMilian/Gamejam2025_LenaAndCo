@@ -313,7 +313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testingCardFeedback: {fileID: 2086686573}
   Trigger_testCardFeedback: 0
-  feedbackToTest: 7
+  feedbackToTest: 0
 --- !u!4 &1470384965
 Transform:
   m_ObjectHideFlags: 0

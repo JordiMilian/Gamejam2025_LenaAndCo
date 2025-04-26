@@ -166,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frontSprite: {fileID: 0}
   backSprite: {fileID: 0}
+  cardAnimator: {fileID: 1825072079944344461}
   TargetPositionToMove: {x: 0, y: 0}
 --- !u!1 &6324770291844635692
 GameObject:

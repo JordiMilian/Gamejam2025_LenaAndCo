@@ -7,6 +7,7 @@ public class CardFeedbackController : MonoBehaviour
      bool isFacingForward;
     [SerializeField] Sprite frontSprite;
     [SerializeField] Sprite backSprite;
+    [SerializeField] Animator cardAnimator;
     public Vector2 TargetPositionToMove;
     public void CardSelected()
     {
@@ -53,7 +54,8 @@ public class CardFeedbackController : MonoBehaviour
     }
     public void FlipCard()
     {
-        
+        cardAnimator.SetBool("isFlipped", !cardAnimator.GetBool("isFlipped"));
+        cardAnimator.SetTrigger("Flip");
     }
     public void EV_ReplaceSprites()
     {
