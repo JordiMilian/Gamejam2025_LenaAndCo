@@ -8,7 +8,11 @@ public class Tooltips_Controller : MonoBehaviour
 {
     [SerializeField] Animator rootAnimator;
     [SerializeField] TextMeshProUGUI tooltipText;
-    Dictionary<CardType, bool> cardTypes;
+    public static Tooltips_Controller Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
     [Serializable]
     public struct CardTypeTooltip
     {
@@ -31,6 +35,7 @@ public class Tooltips_Controller : MonoBehaviour
     }
     void ShowTooltip(CardTypeTooltip tooltip)
     {
+        tooltip.hasShown = true;
         tooltipText.text = tooltip.tooltipText;
         rootAnimator.SetTrigger("Appear");
     }

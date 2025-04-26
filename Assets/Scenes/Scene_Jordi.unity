@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 201.5, y: 93.7}
+  m_AnchoredPosition: {x: 4, y: 93.7}
   m_SizeDelta: {x: 209.1, y: 93.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &193851217
@@ -330,7 +330,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -382.7, y: -209.6}
+  m_AnchoredPosition: {x: 367.4, y: -198.4}
   m_SizeDelta: {x: 209.09999, y: 93.100006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &570869174
@@ -365,11 +365,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee71b8f6432ac3409a209a3e97fbd7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rootAnimator: {fileID: 0}
-  tooltipText: {fileID: 0}
+  rootAnimator: {fileID: 570869174}
+  tooltipText: {fileID: 1369157050}
   cardTypeTooltipsList:
   - tooltipText: 
     cardType: 2
+    hasShown: 0
+  - tooltipText: 
+    cardType: 9
     hasShown: 0
 --- !u!1 &631088482
 GameObject:
@@ -595,37 +598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &779897377
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 779897378}
-  m_Layer: 0
-  m_Name: PistesController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &779897378
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779897377}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.69341, y: -72.99252, z: 87.844505}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &782124687
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,7 +664,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &901794900
 GameObject:
@@ -851,7 +823,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 941481347}
-  m_LocalRotation: {x: 0.6545748, y: 0.000000041901114, z: -0.000000036279783, w: 0.75599724}
+  m_LocalRotation: {x: 0.6545748, y: 0.00000004190111, z: -0.00000003627978, w: 0.75599724}
   m_LocalPosition: {x: 0, y: 134.34, z: -6.1000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -929,7 +901,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1369157049
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1033,7 +1005,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -253.23962, y: -149.34622, z: 264.81583, w: 140.34215}
+  m_margin: {x: -449.82037, y: -149.34622, z: 465.57285, w: 128.05064}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1072,7 +1044,7 @@ RectTransform:
   m_GameObject: {fileID: 1467705999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 193851216}
@@ -1161,7 +1133,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648226544}
-  m_LocalRotation: {x: 0.6545748, y: 0.000000041901114, z: -0.000000036279783, w: 0.75599724}
+  m_LocalRotation: {x: 0.6545748, y: 0.00000004190111, z: -0.00000003627978, w: 0.75599724}
   m_LocalPosition: {x: 0, y: 134.34, z: -6.1000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1183,7 +1155,7 @@ GameObject:
   - component: {fileID: 1789130091}
   - component: {fileID: 1789130090}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Tooltip_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1264,7 +1236,7 @@ RectTransform:
   m_Children:
   - {fileID: 570869173}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1408,6 +1380,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c001589948dbe44f8cb241faa9f5ba5, type: 3}
+--- !u!1 &1895385059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1895385061}
+  - component: {fileID: 1895385060}
+  m_Layer: 0
+  m_Name: SFX_Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1895385060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895385059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b059120511a7f54ab3553ede15ceb73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialPoolSize: 5
+--- !u!4 &1895385061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895385059}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 225.34329, y: 119.61028, z: -26.150284}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1951724001
 PrefabInstance:
   m_ObjectHideFlags: 0
