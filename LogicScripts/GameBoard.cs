@@ -6,7 +6,6 @@ public class GameBoard
     public List<List<object>> Board;
     private int rows;
     private int cols;
-    private bool shopPlaced = false;
     private Random random = new Random();
 
     public int Rows => rows;
@@ -39,42 +38,13 @@ public class GameBoard
         int bossCol = random.Next(cols);
         Board[rows - 1][bossCol] = new FinalBoss();
 
-        for (int i = 1; i < rows - 1; i++)
-        {
-            List<int> availableCols = new List<int>();
-            for (int j = 0; j < cols; j++) availableCols.Add(j);
-            Shuffle(availableCols);
-
-            // Insertar mínimo uno de cada tipo por fila
-            PlaceInRow(i, availableCols, prizeValue);
-
-            // Rellenar huecos restantes con objetos aleatorios
-            for (int j = 0; j < cols; j++)
-            {
-                if (Board[i][j] == null)
-                {
-                    Board[i][j] = RandomObject(prizeValue, dealerPrice, i, j);
-                }
-            }
-        }
-
-        // Si no se ha puesto shop aún, ponerlo
-        if (!shopPlaced)
-        {
-            int randomRow = random.Next(1, rows - 1);
-            int randomCol = random.Next(0, cols);
-            Board[randomRow][randomCol] = new Shop(dealerPrice);
-        }
-    }
-
-    private void PlaceInRow(int row, List<int> colsAvailable, int prizeValue)
-    {
+        // Lista de obligatorios a colocar
         List<Func<object>> mandatoryObjects = new List<Func<object>>()
         {
-            () => new CoinPrize(prizeValue),
-            () => new FishPrize(prizeValue),
-            () => new Seagull(2),
-            () => new SeaUrchin(2),
+            () => new CoinPrize(),
+            () => new FishPrize(),
+            () => new Seagull(),
+            () => new SeaUrchin(),
             () => new Iceberg(),
             () => new Ship(),
             () => new Net(),
@@ -82,44 +52,56 @@ public class GameBoard
             () => new Whale()
         };
 
+        List<(int, int)> availablePositions = new List<(int, int)>();
+
+        // Recoger todas las posiciones válidas
+        for (int i = 1; i < rows - 1; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                if (i == 1 && j == 0) continue; // Saltar la posición delante del player
+                availablePositions.Add((i, j));
+            }
+        }
+
+        Shuffle(availablePositions);
+
+        // Colocar uno de cada obligatorio en posiciones aleatorias
         foreach (var createObject in mandatoryObjects)
         {
-            if (colsAvailable.Count == 0) break;
-            int col = colsAvailable[0];
-            colsAvailable.RemoveAt(0);
+            if (availablePositions.Count == 0) break;
+            var (i, j) = availablePositions[0];
+            availablePositions.RemoveAt(0);
+            Board[i][j] = createObject();
+        }
 
-            if (row == 1 && col == 0) // Segunda fila, columna delante del jugador
+        // Rellenar el resto de huecos
+        for (int i = 1; i < rows - 1; i++)
+        {
+            for (int j = 0; j < cols; j++)
             {
-                object obj = createObject();
-                if (obj is FishPrize || obj is Whale || obj is Hunter)
+                if (Board[i][j] == null)
                 {
-                    continue; // Saltar si es uno prohibido delante del player
+                    Board[i][j] = RandomObject(i, j);
                 }
             }
-
-            Board[row][col] = createObject();
         }
     }
 
-    private object RandomObject(int prizeValue, int dealerPrice, int row, int col)
+    private object RandomObject(int row, int col)
     {
-        if (!shopPlaced && random.NextDouble() < 0.1)
-        {
-            shopPlaced = true;
-            return new Shop(dealerPrice);
-        }
-
         object obj;
         do
         {
             double r = random.NextDouble();
-            if (r < 0.2) obj = new CoinPrize(prizeValue);
-            else if (r < 0.4) obj = new FishPrize(prizeValue);
-            else if (r < 0.5) obj = new Seagull(2);
-            else if (r < 0.6) obj = new SeaUrchin(2);
-            else if (r < 0.7) obj = new Iceberg();
-            else if (r < 0.8) obj = new Ship();
-            else if (r < 0.85) obj = new Net();
+            if (r < 0.1) obj = new Shop();
+            else if (r < 0.2) obj = new CoinPrize();
+            else if (r < 0.3) obj = new FishPrize();
+            else if (r < 0.4) obj = new Seagull();
+            else if (r < 0.5) obj = new SeaUrchin();
+            else if (r < 0.6) obj = new Iceberg();
+            else if (r < 0.7) obj = new Ship();
+            else if (r < 0.8) obj = new Net();
             else if (r < 0.9) obj = new Hunter();
             else obj = new Whale();
         }
@@ -128,12 +110,12 @@ public class GameBoard
         return obj;
     }
 
-    private void Shuffle(List<int> list)
+    private void Shuffle<T>(List<T> list)
     {
         for (int i = 0; i < list.Count; i++)
         {
             int randomIndex = random.Next(i, list.Count);
-            int temp = list[i];
+            T temp = list[i];
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
         }

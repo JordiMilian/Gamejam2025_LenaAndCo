@@ -5,7 +5,7 @@ public class Program
     public static void Main(string[] args)
     {
         Player player = new Player(20);
-        GameBoard gameBoard = new GameBoard(player, 6);;
+        GameBoard gameBoard = new GameBoard(player, 15);;
         
         gameBoard.DisplayBoard();
 

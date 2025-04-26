@@ -8,6 +8,7 @@ public class GameHandler
     private int playerCol;
     private int enemyMultiplier = 1; 
     private bool canTransform = true;
+    private bool lostGame = false;
 
     public GameHandler(GameBoard gb, Player p)
     {
@@ -17,7 +18,7 @@ public class GameHandler
         player = p;
     }
 
-    public void Play()
+    public bool Play()
     {
         bool gameOver = false; 
         bool correctMovement = false;
@@ -51,14 +52,13 @@ public class GameHandler
             correctMovement = false;
             
             // GESTIONAR MOVIMENT
-            MovePlayer(nextRow, nextCol);
+            gameOver = MovePlayer(nextRow, nextCol);
             if (gameOver) {break;}
 
             gameOver = HandleFrontCard();
         }
 
-        Console.WriteLine("Game Over. Press any key to exit.");
-        Console.ReadKey();
+        return lostGame;
     }
 
     private bool CheckMovement(int nextRow, int nextCol) // Checks if a movement can be performed
@@ -177,17 +177,25 @@ public class GameHandler
                 return true;
         }
 
-        if (player.Life == 0)
-        {
-            gameOver = true;
-        }
-
+        gameOver = CheckPlayerLife();
 
         // Move player
         board.Board[nextRow][nextCol] = player;
         board.Board[playerRow][playerCol] = new object();
         playerRow = nextRow;
-        playerCol = nextCol; 
+        playerCol = nextCol;
+
+        return gameOver;
+    }
+
+    private bool CheckPlayerLife()
+    {
+        bool gameOver = false;
+        if (player.Life == 0)
+        {
+            lostGame = true;
+            gameOver = true;
+        }
 
         return gameOver;
     }
@@ -316,7 +324,7 @@ public class GameHandler
     }
 
 
-    ///////////////////////////////////////////////////////////////////     FRONT CARD
+    ///////////////////////////////////////////////////////////////////     FRONT INTERACTIONS
     // Devuelve true si el juego tiene que acabar
     private bool HandleFrontCard()
     {
@@ -328,25 +336,24 @@ public class GameHandler
         {
             object frontCell = board.Board[frontRow][playerCol];
 
-            if (frontCell is FishPrize) // Si la celda delantera es un pez
+            switch (frontCell)
             {
-                DeleteFrontCell(frontRow);
-            }
-            else if (frontCell is Hunter hunter) // Si la celda delantera es un cazador
-            {
-                HunterInteraction(hunter); // Hacemos la interacción que pertoque del cazador
-                DeleteFrontCell(frontRow);
-            }
-            else if (frontCell is Whale whale) // Si la celda delantera es ballena...
-            {
-                WhaleInteraction(whale);
-                DeleteFrontCell(frontRow);
+                case FishPrize:
+                    DeleteFrontCell(frontRow);
+                    break;
+
+                case Hunter hunter:
+                    HunterInteraction(hunter);
+                    DeleteFrontCell(frontRow);
+                    break;
+
+                case Whale whale:
+                    WhaleInteraction(whale);
+                    DeleteFrontCell(frontRow);
+                    break;
             }
 
-            if (player.Life == 0)    // Si el player se queda sin vida se acaba el juego
-            {
-                gameOver = true;
-            }
+            gameOver = CheckPlayerLife();
         }
 
         return gameOver;

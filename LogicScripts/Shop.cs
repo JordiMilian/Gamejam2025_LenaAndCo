@@ -8,7 +8,7 @@ public class Shop
         set { objectPrice = value; }
     }
 
-    public Shop(int price)
+    public Shop()
     {
     }
 }

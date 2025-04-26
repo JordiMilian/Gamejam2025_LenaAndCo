@@ -11,9 +11,8 @@ public class CoinPrize
         set { cValue = value; }
     }
 
-    public CoinPrize(int v)
+    public CoinPrize()
     {
-        cValue = v;
     }
 }
 
@@ -27,9 +26,8 @@ public class Seagull // NO PRIORITARI
         get { return value; }
     }
 
-    public Seagull(int v)
+    public Seagull()
     {
-        value = v;
     }
 }
 
@@ -43,9 +41,8 @@ public class SeaUrchin // NO PRIORITARI
         get { return value; }
     }
 
-    public SeaUrchin(int v)
+    public SeaUrchin()
     {
-        value = v;
     }
 }
 
@@ -55,7 +52,7 @@ public class Iceberg
     {    }
 }
 
-// Barco x2 siguente enemigo que te ataque
+// Barco x2 siguente enemigo que te ataque si foca
 public class Ship 
 {    public Ship()
     {    }

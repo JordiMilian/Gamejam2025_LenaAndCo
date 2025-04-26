@@ -11,7 +11,7 @@ public class FishPrize
         set {fValue = value; }
     }
 
-    public FishPrize(int v)
+    public FishPrize()
     {
     }
 }
