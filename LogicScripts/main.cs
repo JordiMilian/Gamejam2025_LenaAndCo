@@ -4,15 +4,22 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        Player player = new Player(20);
-        GameBoard gameBoard = new GameBoard(player, 15);;
+        bool lost;
+        Player player = new Player();
+        GameBoard gameBoard = new GameBoard(player, 5);;
         
         gameBoard.DisplayBoard();
 
         GameHandler gameHandler = new GameHandler(gameBoard, player);
-        gameHandler.Play();
+        lost = gameHandler.Play();
 
-        Console.WriteLine("\nPress any key to exit...");
-        Console.ReadKey();
+        if (lost)
+        {
+            Console.WriteLine("\nOhh you lost... what a dumbass");
+        }
+        else 
+        {
+            Console.WriteLine("\nYOU WON, but you're still a dumbass");
+        }
     }
 }

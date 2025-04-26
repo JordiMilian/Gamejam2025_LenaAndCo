@@ -1,10 +1,10 @@
 public class Player
 {
     private bool isSeal;
-    private int life;
     private int coins;
     private int strength;
     private int maxLife = 12;
+    private int currentLife;
 
     public bool IsSeal
     {
@@ -14,8 +14,8 @@ public class Player
 
     public int Life
     {
-        get { return life; }
-        set { life = value; }
+        get { return currentLife; }
+        set { currentLife = value; }
     }
 
     public int Coins
@@ -35,10 +35,10 @@ public class Player
         get { return maxLife; }
     }
 
-    public Player(int life)
+    public Player()
     {
         IsSeal = false;
-        Life = life;
+        Life = maxLife;
         Coins = 0;
     }
 }

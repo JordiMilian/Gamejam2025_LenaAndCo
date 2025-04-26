@@ -44,10 +44,6 @@ public class GameHandler
                 Console.Write("Selecciona la pròxima columna del player (current: "+playerCol+")");
                 nextCol = Convert.ToInt32(Console.ReadLine());
                 correctMovement = CheckMovement(nextRow, nextCol);
-
-                // DEBUG
-                if (correctMovement) {Console.Write("OLEE la posición es correcta\n");}
-                else {Console.Write("ayayyyyyy la posición es incorrecta\n");}
             }
             correctMovement = false;
             
@@ -258,7 +254,7 @@ public class GameHandler
        // resta -1 a las CoinPrize y FishPrice de la fila siguiente al player
     private void IcebergInteraction()
     {
-        int nextRow = playerRow + 1;
+        int nextRow = playerRow + 2; // PORQUE AQUÍ AÚN NO SE HA CAMBIADO LA POSICIÓN DEL PLAYER
         if (nextRow >= board.Rows) return;
 
         for (int col = 0; col < board.Cols; col++)
