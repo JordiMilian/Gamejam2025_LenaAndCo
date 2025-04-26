@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Card", menuName = "ScriptableObjects/Card", order = 1)]
 public class CardObject : ScriptableObject
 {
-    public enum CardType { Null, Player, Hunter, Fish, Coin, Shop}
+    public enum CardType { Null, Player, Hunter, Fish, Coin, Shop, Seagull, SeaUrchin, Iceberg, Ship, Net, Whale, FinalBoss}
     public string cardName = "";
     public CardType cardType = CardType.Null;
     public int value = 0;
