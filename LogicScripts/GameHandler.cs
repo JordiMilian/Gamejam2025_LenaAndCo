@@ -39,8 +39,7 @@ public class GameHandler
             // Validar si el player es pot moure a la posició escollida
             while (!correctMovement)
             {
-                Console.Write("Selecciona la pròxima fila del player (current: "+playerRow+")");
-                nextRow = Convert.ToInt32(Console.ReadLine());
+                nextRow = playerRow + 1;
                 Console.Write("Selecciona la pròxima columna del player (current: "+playerCol+")");
                 nextCol = Convert.ToInt32(Console.ReadLine());
                 correctMovement = CheckMovement(nextRow, nextCol);
@@ -48,14 +47,14 @@ public class GameHandler
                 // DEBUG
                 if (correctMovement) {Console.Write("OLEE la posición es correcta\n");}
                 else {Console.Write("ayayyyyyy la posición es incorrecta\n");}
-                correctMovement = false;
             }
-
+            correctMovement = false;
+            
             // GESTIONAR MOVIMENT
             MovePlayer(nextRow, nextCol);
             if (gameOver) {break;}
 
-            HandleFrontCard();
+            gameOver = HandleFrontCard();
         }
 
         Console.WriteLine("Game Over. Press any key to exit.");
@@ -134,11 +133,11 @@ public class GameHandler
     private bool MovePlayer(int nextRow, int nextCol) // Moves a player to the next position and handles interactions of the other card
     {
         bool gameOver = false;
-        object nextCell = board.Board[nextRow][nextCol];
+        object targetCell = board.Board[nextRow][nextCol];
 
 
         // HandleInteraction
-        switch (nextCell)
+        switch (targetCell)
         {
             case Shop shop:
                 ShopInteraction(shop);
@@ -274,7 +273,10 @@ public class GameHandler
     // Barco x2 siguente enemigo que te ataque
     private void ShipInteraction()
     {
-        enemyMultiplier = 2;
+        if (player.IsSeal)
+        {
+            enemyMultiplier = 2;
+        }
     }
 
     // Red te obliga a no girar en el siguiente turno solo 
