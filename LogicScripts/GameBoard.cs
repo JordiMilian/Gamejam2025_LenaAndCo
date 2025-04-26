@@ -3,30 +3,40 @@ using System.Collections.Generic;
 
 public class GameBoard
 {
-    private List<List<object>> board;
+    public List<List<object>> Board;
     private int rows;
     private int cols;
     private bool dealerPlaced = false;
-    private Random random = new Random();
+    private Random random = new Random(); 
+    
+    public int Rows
+    {
+        get { return rows; }
+    }
 
-    public GameBoard(int numRows, int numCols = 4, int playerLife = 20, int dealerPrice = 5, int coinPrize = 3, int fishPrize = 3)
+    public int Cols
+    {
+        get { return cols; }
+    }
+
+    public GameBoard(Player player, int numRows, int numCols = 4, int dealerPrice = 5, int coinPrize = 3, int fishPrize = 3)
     {
         rows = numRows;
         cols = numCols;
-        board = new List<List<object>>(rows);
+        Board = new List<List<object>>(rows);
 
         for (int i = 0; i < rows; i++)
         {
-            board.Add(new List<object>(new object[cols]));
+            Board.Add(new List<object>(new object[cols]));
         }
 
-        InitializeBoard(playerLife, dealerPrice, coinPrize, fishPrize);
+        InitializeBoard(player, dealerPrice, coinPrize, fishPrize);
     }
 
-    private void InitializeBoard(int playerLife, int dealerPrice, int coinPrize, int fishPrize)
+    private void InitializeBoard(Player player, int dealerPrice, int coinPrize, int fishPrize)
     {
-        board[0][0] = new Player(playerLife);
-        board[rows - 1][cols - 1] = new Monster(10);
+        Board[0][0] = player;
+        Board[rows - 1][cols - 1] = new Monster(10);
 
         for (int i = 1; i < rows - 1; i++)
         {
@@ -34,7 +44,7 @@ public class GameBoard
             {
                 if (!dealerPlaced && random.NextDouble() < 0.2) 
                 {
-                    board[i][j] = new Dealer(dealerPrice);
+                    Board[i][j] = new Dealer(dealerPrice);
                     dealerPlaced = true;
                 }
                 else
@@ -43,13 +53,13 @@ public class GameBoard
                     if (choice < 0.5)
                     {
                         if (random.Next(0, 2) == 0)
-                            board[i][j] = new CoinPrize(coinPrize);
+                            Board[i][j] = new CoinPrize(coinPrize);
                         else
-                            board[i][j] = new FishPrize(fishPrize);
+                            Board[i][j] = new FishPrize(fishPrize);
                     }
                     else
                     {
-                        board[i][j] = new Monster(5);
+                        Board[i][j] = new Monster(5);
                     }
                 }
             }
@@ -59,17 +69,17 @@ public class GameBoard
         {
             int randomRow = random.Next(1, rows - 1);
             int randomCol = random.Next(0, cols);
-            board[randomRow][randomCol] = new Dealer(100);
+            Board[randomRow][randomCol] = new Dealer(100);
         }
     }
 
     public void DisplayBoard()
     {
-        for (int i = 0; i < board.Count; i++)
+        for (int i = 0; i < Board.Count; i++)
         {
-            for (int j = 0; j < board[i].Count; j++)
+            for (int j = 0; j < Board[i].Count; j++)
             {
-                object item = board[i][j];
+                object item = Board[i][j];
                 if (item != null)
                 {
                     if (item is Player)
