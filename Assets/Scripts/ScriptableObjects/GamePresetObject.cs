@@ -9,11 +9,12 @@ public class GamePresetObject : ScriptableObject
 {
     public string gamePresetName = "";
 
-    public CardRows[] gameCards;
+    public List<CardColumn> level;
+
 }
 
 [Serializable]
-public class CardRows
+public class CardColumn
 {
-    public CardObject[] row;
+    public List<CardObject> position;
 }
