@@ -22,5 +22,9 @@ public class RegularCard_AnimationController : MonoBehaviour
     {
         GO_cardRoot.SetActive(false);
     }
+    public void Dissapear()
+    {
+        cardAnimator.SetTrigger("Dissapear");
+    }
 
 }
