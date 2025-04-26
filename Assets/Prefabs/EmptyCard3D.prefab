@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2800641600902907690}
   - component: {fileID: 992022309780723671}
   - component: {fileID: 3328058844005001114}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CardMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 9046218092990010516}
   - component: {fileID: 1825072079944344461}
   - component: {fileID: 7626259437095291790}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EmptyCard3D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7288774308446413095}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CardRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -17,7 +17,7 @@ public class GameController_Feedback : MonoBehaviour
     }
     private void Update()
     {
-        if(Trigger_testCardFeedback)
+        if (Trigger_testCardFeedback || Input.GetKeyDown(KeyCode.T))
         {
             Trigger_testCardFeedback = false;
 
