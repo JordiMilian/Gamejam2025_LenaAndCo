@@ -5,7 +5,7 @@ using UnityEngine;
 public class CardController : MonoBehaviour
 {
     public CardObject card;
-
+    public GameObject cardObject;
     public void InitializateCard()
     {
 
