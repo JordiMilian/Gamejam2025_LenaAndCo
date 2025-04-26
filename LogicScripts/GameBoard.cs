@@ -79,8 +79,7 @@ public class GameBoard
             () => new Ship(),
             () => new Net(),
             () => new Hunter(),
-            () => new Whale(),
-            () => new Pirate()
+            () => new Whale()
         };
 
         foreach (var createObject in mandatoryObjects)
@@ -92,7 +91,7 @@ public class GameBoard
             if (row == 1 && col == 0) // Segunda fila, columna delante del jugador
             {
                 object obj = createObject();
-                if (obj is FishPrize || obj is Whale || obj is Hunter || obj is Pirate)
+                if (obj is FishPrize || obj is Whale || obj is Hunter)
                 {
                     continue; // Saltar si es uno prohibido delante del player
                 }
@@ -122,10 +121,9 @@ public class GameBoard
             else if (r < 0.8) obj = new Ship();
             else if (r < 0.85) obj = new Net();
             else if (r < 0.9) obj = new Hunter();
-            else if (r < 0.95) obj = new Whale();
-            else obj = new Pirate();
+            else obj = new Whale();
         }
-        while (row == 1 && col == 0 && (obj is FishPrize || obj is Whale || obj is Hunter || obj is Pirate));
+        while (row == 1 && col == 0 && (obj is FishPrize || obj is Whale || obj is Hunter));
 
         return obj;
     }
@@ -174,8 +172,6 @@ public class GameBoard
                         Console.Write("Ca ");
                     else if (item is Whale)
                         Console.Write("Or ");
-                    else if (item is Pirate)
-                        Console.Write("Pi ");
                 }
                 else
                 {

@@ -70,7 +70,7 @@ public class Net
 // Red te obliga a no girar en el siguiente turno solo 
 public class FinalBoss 
 {    
-    int attackValue = 10;
+    int attackValue = 25;
 
     public int Value
     {

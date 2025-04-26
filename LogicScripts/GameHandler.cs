@@ -169,9 +169,6 @@ public class GameHandler
             case Whale whale:
                 WhaleInteraction(whale);
                 break;
-            case Pirate pirate:
-                PirateInteraction(pirate);
-                break;
             case FinalBoss finalboss:
                 FinalBossInteraction(finalboss);
                 break;
@@ -303,27 +300,14 @@ public class GameHandler
     {
         if (player.IsSeal)
         {
-            AttackPlayer(whale.SealValue);
+            AttackPlayer(whale.Value * 2);
         }
         else
         {
-            AttackPlayer(whale.HumanValue);
+            AttackPlayer(whale.Value);
         }
     }
 
-    // Si es humano resta humanValue a las monedas. Si es foca hay que restarle attackValue a la vida del player y sumar coinValue a las monedas
-    private void PirateInteraction(Pirate pirate)
-    {
-        if (player.IsSeal)
-        {
-            AttackPlayer(pirate.AttackValue);
-            player.Coins += pirate.SealValue;
-        }
-        else
-        {
-            player.Coins = SubstractCoins(pirate.HumanValue);
-        }
-    }
 
     // Si es el final boss resta el ataque
     private void FinalBossInteraction(FinalBoss finalBoss)
@@ -356,11 +340,6 @@ public class GameHandler
             else if (frontCell is Whale whale) // Si la celda delantera es ballena...
             {
                 WhaleInteraction(whale);
-                DeleteFrontCell(frontRow);
-            }
-            else if (frontCell is Pirate pirate)
-            {
-                PirateInteraction(pirate);
                 DeleteFrontCell(frontRow);
             }
 

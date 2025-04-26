@@ -34,23 +34,18 @@ public class Hunter
 // Si el player está delante de esta carta o cae en la misma casilla -> si es foca -> resta sealValue a la vida, si es humano resta humanValue a la vida
 public class Whale
 {
-    private int sealValue = 9;
-    private int humanValue = 5;
+    private int value = 5;
 
-    public int SealValue
+    public int Value
     {
-        get { return sealValue; }
-    }
-    public int HumanValue
-    {
-        get { return humanValue; }
+        get { return value; }
     }
     public Whale()
     {}
 }
 
 // Si el player está delante de esta carta o cae en la misma casilla -> si es humano resta humanValue a las monedas. Si es foca hay que restarle attackValue a la vida del player y sumar coinValue a las monedas
-public class Pirate
+/*public class Pirate
 {
     private int coinValue = 3;
     private int attackValue = 3;
@@ -71,4 +66,4 @@ public class Pirate
     }
     public Pirate()
     {}
-}
+}*/
