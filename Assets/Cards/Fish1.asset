@@ -15,3 +15,4 @@ MonoBehaviour:
   cardName: Fish1
   cardType: 3
   value: 1
+  material: {fileID: 2100000, guid: 2cbf542c164c55747a41c04695fc7728, type: 2}

@@ -10,4 +10,5 @@ public class CardObject : ScriptableObject
     public CardType cardType = CardType.Null;
     public int value = 0;
 
+    public Material material;
 }

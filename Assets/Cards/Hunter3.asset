@@ -15,3 +15,4 @@ MonoBehaviour:
   cardName: Hunter3
   cardType: 2
   value: 3
+  material: {fileID: 2100000, guid: 11d2eb11854bf0140971003d057fdba8, type: 2}

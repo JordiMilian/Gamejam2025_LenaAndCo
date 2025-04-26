@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4225668054346697499}
   - component: {fileID: 6808876091105377282}
   - component: {fileID: 4666882823453114834}
+  - component: {fileID: 7732689665448601334}
   m_Layer: 2
   m_Name: RegularPrefab
   m_TagString: Player
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986502915975703761}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -34,7 +35,7 @@ Transform:
   - {fileID: 5129047857396927481}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!95 &6808876091105377282
 Animator:
   serializedVersion: 4
@@ -68,6 +69,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GO_cardRoot: {fileID: 1218242166694560675}
+--- !u!114 &7732689665448601334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986502915975703761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e44cbc2f2a6318c41bc5bbb8442012cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Renderer: {fileID: 980042315823765761}
 --- !u!1 &1218242166694560675
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,6 +228,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a0f4523e22ee3445892b6c26538af7f, type: 3}
+--- !u!23 &980042315823765761 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 1a0f4523e22ee3445892b6c26538af7f, type: 3}
+  m_PrefabInstance: {fileID: 1898367207782761861}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2149030212566327918 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1a0f4523e22ee3445892b6c26538af7f, type: 3}

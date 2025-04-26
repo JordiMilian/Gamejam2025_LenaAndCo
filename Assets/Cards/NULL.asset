@@ -15,3 +15,4 @@ MonoBehaviour:
   cardName: NULL
   cardType: 0
   value: 0
+  material: {fileID: -876546973899608171, guid: 1a0f4523e22ee3445892b6c26538af7f, type: 3}
