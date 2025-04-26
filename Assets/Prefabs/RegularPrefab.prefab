@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6808876091105377282}
   - component: {fileID: 6749585206834862464}
   m_Layer: 2
-  m_Name: PlayerPrefab
+  m_Name: RegularPrefab
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ Animator:
   m_GameObject: {fileID: 986502915975703761}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: db0b40c5e8226e946b995397a08527c4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9e4efa9e1f9638d4e89f9095c6208c03, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -67,9 +67,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1cf337795219c40857df49b07f50f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &1218242166694560675
 GameObject:
   m_ObjectHideFlags: 0
