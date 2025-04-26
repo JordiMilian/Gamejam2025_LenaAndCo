@@ -40,7 +40,7 @@ public class SceneStarterController : MonoBehaviour
 
                 newCardController.card = gamePreset.level[i].position[j];
 
-                if(newCardController.card.cardType == CardObject.CardType.Null)
+                if(newCardController.card.cardType == CardType.Null)
                 {
                     Destroy(newCardObject);
                 }

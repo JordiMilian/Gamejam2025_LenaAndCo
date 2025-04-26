@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum VFXType
 {
-    splash, waterDrop, coins, damaged
+    waterDrop
 }
 public class VFXsControllers : MonoBehaviour
 {
@@ -19,16 +19,11 @@ public class VFXsControllers : MonoBehaviour
         particle_waterDrop.Play();
         switch (type)
         {
-            case VFXType.splash:
-                break;
             case VFXType.waterDrop:
                 particle_waterDrop.gameObject.transform.position = position;
                 particle_waterDrop.Play();
                 break;
-            case VFXType.coins:
-                break;
-            case VFXType.damaged:
-                break;
         }
     }
+
 }
