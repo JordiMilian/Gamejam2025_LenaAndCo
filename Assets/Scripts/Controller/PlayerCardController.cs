@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerCardController : MonoBehaviour
 {
+    Animator cardAnimator;
+    private void Awake()
+    {
+        cardAnimator = GetComponent<Animator>();
+    }
     Coroutine followCoroutine;
     public void StartFollowingMouse()
     {
@@ -37,5 +42,11 @@ public class PlayerCardController : MonoBehaviour
     {
         transform.position = placementPos;
         if (followCoroutine != null) { StopCoroutine(followCoroutine); }
+    }
+
+    public void FlipCard()
+    {
+        cardAnimator.SetBool("isFlipped", !cardAnimator.GetBool("isFlipped"));
+        cardAnimator.SetTrigger("Flip");
     }
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameController_Feedback : MonoBehaviour
 {
-    [SerializeField] CardFeedbackController testingCardFeedback;
+    /*
+    [SerializeField] RegularCardController testingCardFeedback;
     [SerializeField] bool Trigger_testCardFeedback;
     public enum CardTestingEnum
     {
@@ -52,6 +53,7 @@ public class GameController_Feedback : MonoBehaviour
                     break;
             }
         }
+        */
 
-    }
+    
 }

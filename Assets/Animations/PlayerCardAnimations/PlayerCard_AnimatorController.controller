@@ -47,9 +47,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.04317546
+  m_TransitionDuration: 0.25291318
   m_TransitionOffset: 0
-  m_ExitTime: 0.95928687
+  m_ExitTime: 0.78450537
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -105,14 +105,14 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EmptyCard3D
+  m_Name: PlayerCard_AnimatorController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Flip
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
+    m_DefaultBool: 1
     m_Controller: {fileID: 0}
   - m_Name: isFlipped
     m_Type: 4
@@ -171,13 +171,13 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 5159035459851107279}
-    m_Position: {x: 330, y: -20, z: 0}
+    m_Position: {x: 400, y: -40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6713209646165104892}
-    m_Position: {x: 300, y: 110, z: 0}
+    m_Position: {x: 290, y: 70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8622655857026782765}
-    m_Position: {x: 40, y: 0, z: 0}
+    m_Position: {x: 150, y: -40, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -7148294996329111274}
@@ -185,7 +185,7 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 140, y: -90, z: 0}
+  m_AnyStatePosition: {x: 300, y: -150, z: 0}
   m_EntryPosition: {x: 40, y: 210, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
@@ -201,7 +201,7 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Flip
     m_EventTreshold: 0
-  - m_ConditionMode: 2
+  - m_ConditionMode: 1
     m_ConditionEvent: isFlipped
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
@@ -210,9 +210,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.031523228
+  m_TransitionDuration: 0.2974407
   m_TransitionOffset: 0
-  m_ExitTime: 0.9563392
+  m_ExitTime: 0.7347413
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

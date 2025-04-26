@@ -108,7 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9046218092990010516}
   - component: {fileID: 1825072079944344461}
-  - component: {fileID: 7626259437095291790}
+  - component: {fileID: 5273558640926215640}
   m_Layer: 2
   m_Name: EmptyCard3D
   m_TagString: Untagged
@@ -142,7 +142,7 @@ Animator:
   m_GameObject: {fileID: 5376958159480091486}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: db0b40c5e8226e946b995397a08527c4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9e4efa9e1f9638d4e89f9095c6208c03, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -152,7 +152,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7626259437095291790
+--- !u!114 &5273558640926215640
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,10 +164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb40deb46a50074e9d2c0e3548aa40a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
-  cardAnimator: {fileID: 1825072079944344461}
-  TargetPositionToMove: {x: 0, y: 0}
 --- !u!1 &6324770291844635692
 GameObject:
   m_ObjectHideFlags: 0

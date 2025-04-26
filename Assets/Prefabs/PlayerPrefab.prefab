@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4225668054346697499}
   - component: {fileID: 6808876091105377282}
-  - component: {fileID: 3385549497607492609}
+  - component: {fileID: 6749585206834862464}
   m_Layer: 2
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -55,7 +55,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3385549497607492609
+--- !u!114 &6749585206834862464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,12 +64,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 986502915975703761}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efb40deb46a50074e9d2c0e3548aa40a, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d1cf337795219c40857df49b07f50f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
-  TargetPositionToMove: {x: 0, y: 0}
 --- !u!1 &1218242166694560675
 GameObject:
   m_ObjectHideFlags: 0
