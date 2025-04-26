@@ -3,6 +3,8 @@ public class Player
     private bool isSeal;
     private int life;
     private int coins;
+    private int strength;
+    private int maxLife = 12;
 
     public bool IsSeal
     {
@@ -20,6 +22,17 @@ public class Player
     {
         get { return coins; }
         set { coins = value; }
+    }
+
+    public int Strength
+    {
+        get { return strength; }
+        set { strength = value; }
+    }
+
+    public int MaxLife
+    {
+        get { return maxLife; }
     }
 
     public Player(int life)

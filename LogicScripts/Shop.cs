@@ -1,6 +1,6 @@
-public class Dealer
+public class Shop
 {
-    private int objectPrice;
+    private int objectPrice = 5;
 
     public int ObjectPrice
     {
@@ -8,8 +8,7 @@ public class Dealer
         set { objectPrice = value; }
     }
 
-    public Dealer(int price)
+    public Shop(int price)
     {
-        ObjectPrice = price;
     }
 }
