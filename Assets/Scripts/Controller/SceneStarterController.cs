@@ -36,9 +36,14 @@ public class SceneStarterController : MonoBehaviour
                 CardController newCardController = newCardSlot.GetComponentInChildren<CardController>();
 
                 newCardController.cardPosition = new Vector2(i, j);
-                Instantiate(cardPrefab, newCardSlot.transform);
+                GameObject newCardObject = Instantiate(cardPrefab, newCardSlot.transform);
 
                 newCardController.card = gamePreset.level[i].position[j];
+
+                if(newCardController.card.cardType == CardObject.CardType.Null)
+                {
+                    Destroy(newCardObject);
+                }
             }
         }
 
