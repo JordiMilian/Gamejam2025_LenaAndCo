@@ -7,9 +7,9 @@ public enum CardType { Null, Player, Hunter, Fish, Coin, Shop, Seagull, SeaUrchi
 
 public class CardObject : ScriptableObject
 {
-    public string cardName = "";
     public CardType cardType = CardType.Null;
     public int value = 0;
-
+    public bool visibleValue = true;
     public Material material;
+    public AudioClip audioEffect;
 }

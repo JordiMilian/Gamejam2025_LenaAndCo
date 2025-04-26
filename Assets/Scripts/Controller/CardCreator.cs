@@ -16,7 +16,14 @@ public class CardCreator : MonoBehaviour
 
             m_Renderer.material = cardObject.material;
 
-            tmp.text = cardObject.value.ToString();
+            if (cardObject.value <= 0 || cardObject.visibleValue == false)
+            {
+                tmp.text = "";
+            }
+            else
+            {
+                tmp.text = cardObject.value.ToString();
+            }
         }
     }
 }

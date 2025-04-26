@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbf4e38c3eca16d4a9d7fb14bbe85d12, type: 3}
-  m_Name: Fish1
+  m_Name: Iceberg
   m_EditorClassIdentifier: 
-  cardName: Fish1
-  cardType: 3
-  value: 1
-  material: {fileID: 2100000, guid: 2cbf542c164c55747a41c04695fc7728, type: 2}
+  cardName: Iceberg
+  cardType: 8
+  value: 0
+  material: {fileID: -876546973899608171, guid: 1a0f4523e22ee3445892b6c26538af7f, type: 3}

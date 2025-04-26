@@ -12,8 +12,11 @@ public class SceneStarterController : MonoBehaviour
     public float XOffset = 0;
     public float ZOffset = 0;
     public GamePresetObject gamePreset;
+
+    public static SceneStarterController Instance;
     private void Awake()
     {
+        Instance = this;
         sceneCreated = false;
 
         CreateCardSlots();
@@ -32,7 +35,7 @@ public class SceneStarterController : MonoBehaviour
 
                 newCardSlot.transform.position = newPosition;
                 newCardSlot.transform.parent = this.transform;
-                newCardSlot.name = "Card(" + (i + 1).ToString() + "," + (j + 1).ToString() + ")";
+                newCardSlot.name = "Card(" + (i).ToString() + "," + (j).ToString() + ")";
                 CardController newCardController = newCardSlot.GetComponentInChildren<CardController>();
 
                 newCardController.cardPosition = new Vector2(i, j);
@@ -42,7 +45,7 @@ public class SceneStarterController : MonoBehaviour
 
                 if(newCardController.card.cardType == CardType.Null)
                 {
-                    Destroy(newCardObject);
+                    Destroy(newCardObject.transform.parent.gameObject);
                 }
                 else
                 {
@@ -52,4 +55,23 @@ public class SceneStarterController : MonoBehaviour
         }
 
     }
+
+    public void AddCard(Vector2 cardPosition, CardObject card)
+    {
+        GameObject newCardSlot = Instantiate(cardSlotPrefab);
+        Vector3 newPosition = new Vector3(originalPos.x + XOffset * cardPosition.y, originalPos.y, originalPos.z + ZOffset * cardPosition.x);
+
+        newCardSlot.transform.position = newPosition;
+        newCardSlot.transform.parent = this.transform;
+        newCardSlot.name = "Card(" + (cardPosition.x).ToString() + "," + (cardPosition.y).ToString() + ")";
+
+        CardController newCardController = newCardSlot.GetComponentInChildren<CardController>();
+        
+        newCardController.cardPosition = cardPosition;
+        GameObject newCardObject = Instantiate(cardPrefab, newCardSlot.transform);
+
+        newCardController.card = card;
+        GameController.Instance.AddGameCard(newCardController);
+    }
+
 }

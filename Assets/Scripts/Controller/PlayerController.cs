@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public CardController targetCard;
 
-    [SerializeField] PlayerCard_AnimationController animationController;
+    public PlayerCard_AnimationController animationController;
 
     int clickCounter = 0;
 
@@ -79,6 +79,8 @@ public class PlayerController : MonoBehaviour
 
     void FlipCard()
     {
+        if (GameController.Instance.CanTransform() == false) return;
+
         Debug.Log("FLIP");
         animationController.FlipCard();
         GameController.Instance.isSeal = !GameController.Instance.isSeal;
@@ -93,6 +95,11 @@ public class PlayerController : MonoBehaviour
     public void TriggerActionAnimation()
     {
         animationController.Interact();
+    }
+
+    public void TriggerDamageAnimation()
+    {
+        animationController.Damaged();
     }
     IEnumerator CantMoveFor(float time)
     {
