@@ -10,6 +10,15 @@ public class PlayerController : MonoBehaviour
     public bool canMove;
 
     public CardController targetCard;
+
+    [SerializeField] PlayerCard_AnimationController animationController;
+
+    int clickCounter = 0;
+
+    private void Start()
+    {
+        clickCounter = 0;
+    }
     private Vector3 GetMousePos()
     {
         return Camera.main.WorldToScreenPoint(transform.position);
@@ -18,10 +27,22 @@ public class PlayerController : MonoBehaviour
     private void OnMouseDown()
     {
         if (!canMove) return;
+
+        clickCounter++;
+
+        StartCoroutine(DoubleClickEvent());
         currentPosition = transform.position;
         mousePosition = Input.mousePosition - GetMousePos();
     }
 
+    IEnumerator DoubleClickEvent()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        if (clickCounter >= 2) FlipCard();
+        
+        clickCounter = 0;
+    }
     private void OnMouseDrag()
     {
         if (!canMove) return;
@@ -56,8 +77,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void FlipCard()
+    {
+        Debug.Log("FLIP");
+        animationController.FlipCard();
+        GameController.Instance.isSeal = !GameController.Instance.isSeal;
+
+        StartCoroutine(CantMoveFor(1));
+    }
     public void ResetPlayer()
     {
         transform.position = currentPosition;
+    }
+
+    public void TriggerActionAnimation()
+    {
+        animationController.Interact();
+    }
+    IEnumerator CantMoveFor(float time)
+    {
+        canMove = false;
+
+        yield return new WaitForSeconds(time);
+
+        canMove = true;
     }
 }

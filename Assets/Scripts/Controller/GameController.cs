@@ -8,19 +8,55 @@ public class GameController : MonoBehaviour
     [SerializeField] PlayerController playerCardController;
     [SerializeField] CameraController cameraController;
 
-    public int currentLevel = 0;
+    [SerializeField] TextMeshProUGUI hpUI, coinUI;
+
+    public Dictionary<Vector2, CardController> gameCards = new Dictionary<Vector2, CardController>();
+
+    public int hp;
+    public int maxHp;
+
+    public int coins;
+
     public static GameController Instance;
 
     public Vector2 playerCardPosition;
 
+    public bool isSeal = false;
     private void Awake()
     {
         Instance = this;
+        SetHp(10);
+        SetCoin(0);
+        isSeal = false;
     }
     private void Start()
     {
-        currentLevel = 0;
         playerCardController.canMove = true;
+    }
+
+    public void AddGameCard(CardController newCard)
+    {
+        Debug.Log("Añadiendo " + newCard.transform.name + " a " + newCard.cardPosition.ToString());
+        gameCards.Add(newCard.cardPosition, newCard);
+    }
+
+    public void RemoveGameCard(Vector2 cardPos)
+    {
+        gameCards.Remove(cardPos);
+    }
+    public void SetHp(int newHp)
+    {
+        hp = newHp;
+        if(hp > maxHp) hp = maxHp;
+
+        hpUI.text = "HP: " + hp.ToString();
+    }
+
+    public void SetCoin(int newCoins)
+    {
+        coins = newCoins;
+
+        coinUI.text = "Coins: " + coins.ToString();
     }
     private void Update()
     {
@@ -55,6 +91,9 @@ public class GameController : MonoBehaviour
 
             StartCoroutine(MoveCamera());
             HandleCardInteraction(targetCard);
+
+            playerCardController.TriggerActionAnimation();
+            DestroyNeighbourCards(targetCard);
         }
         else
         {
@@ -63,6 +102,18 @@ public class GameController : MonoBehaviour
         }
     }
 
+    void DestroyNeighbourCards(CardController targetCard)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            CardController temp = null;
+            gameCards.TryGetValue(new Vector2(targetCard.cardPosition.x, i), out temp);
+
+            if(temp != null) Destroy(temp.gameObject);
+
+            RemoveGameCard(new Vector2(targetCard.cardPosition.x, i));
+        }
+    }
     IEnumerator MoveCamera()
     {
         yield return new WaitForSeconds(0.1f);
@@ -72,8 +123,7 @@ public class GameController : MonoBehaviour
 
     void HandleCardInteraction(CardController targetCard)
     {
-        //Basandonos en playerCardPosition realizamos logica mirando que carta había aquí
-        //Destruimos la antigua carta ahí
+        Debug.Log("La carta a la que hemos ido es: " + targetCard.card.cardType.ToString());
         HandleNeighbourCard();
         Destroy(targetCard.gameObject);
     }

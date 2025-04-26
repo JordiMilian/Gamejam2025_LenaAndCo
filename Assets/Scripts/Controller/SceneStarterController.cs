@@ -44,6 +44,10 @@ public class SceneStarterController : MonoBehaviour
                 {
                     Destroy(newCardObject);
                 }
+                else
+                {
+                    GameController.Instance.AddGameCard(newCardController);
+                }
             }
         }
 
