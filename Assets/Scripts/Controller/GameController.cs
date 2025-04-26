@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool canPlayerMove = false;
+    [SerializeField] PlayerCardController playerCardController;
+    [SerializeField] CameraController cameraController;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        canPlayerMove = true;
+        //playerCardController.StartFollowingMouse();
+    }
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            cameraController.MoveCamera();
+        }
     }
 }

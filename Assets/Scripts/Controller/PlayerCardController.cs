@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCardController : MonoBehaviour
 {
     Animator cardAnimator;
+ 
     private void Awake()
     {
         cardAnimator = GetComponent<Animator>();
