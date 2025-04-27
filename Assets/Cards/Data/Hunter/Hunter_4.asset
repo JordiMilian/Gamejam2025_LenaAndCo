@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hunter_4
   m_EditorClassIdentifier: 
   cardType: 2
-  value: 2
+  value: 4
   visibleValue: 1
   material: {fileID: 2100000, guid: 5dd2fea775a2bee4bb5f890b1fa01d9f, type: 2}
-  audioEffect: {fileID: 8300000, guid: 6acc2fb50049dad4896f09d9a8df1e6d, type: 3}
+  audioEffect: {fileID: 8300000, guid: 1592daa49143bd445a2273b90e38a93f, type: 3}

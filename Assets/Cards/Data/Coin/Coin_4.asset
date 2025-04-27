@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Coin_4
   m_EditorClassIdentifier: 
   cardType: 4
-  value: 3
+  value: 4
   visibleValue: 1
   material: {fileID: 2100000, guid: 683131d05ea824a40ad620b6bb83a240, type: 2}
   audioEffect: {fileID: 8300000, guid: 698f5cb1f6f26dd4a8ed0b7a5a02017e, type: 3}

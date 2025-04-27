@@ -15,5 +15,5 @@ MonoBehaviour:
   cardType: 3
   value: 2
   visibleValue: 1
-  material: {fileID: 2100000, guid: 2cbf542c164c55747a41c04695fc7728, type: 2}
-  audioEffect: {fileID: 0}
+  material: {fileID: 2100000, guid: 656e0be26755cb14e8940b40f490459a, type: 2}
+  audioEffect: {fileID: 8300000, guid: f6a47e26eae4b05458327a9f478b54e1, type: 3}
