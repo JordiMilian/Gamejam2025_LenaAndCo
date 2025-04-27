@@ -563,8 +563,19 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            blockTransform = true;
+
+            StartCoroutine(HunterNetAnimation(hunterCard));
         }
+    }
+
+    IEnumerator HunterNetAnimation(CardController hunterCard)
+    {
+        hunterCard.animationController.AttackCardBelow();
+        playerCardController.animationController.Damaged();
+
+        yield return new WaitForSeconds(1f);
+        Destroy(hunterCard.gameObject);
+        blockTransform = true;
     }
 
     private void FrontFishInteraction(CardController fishCard)
