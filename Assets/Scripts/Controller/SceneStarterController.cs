@@ -56,7 +56,7 @@ public class SceneStarterController : MonoBehaviour
 
     }
 
-    public void AddCard(Vector2 cardPosition, CardObject card)
+    public void AddCard(Vector2 cardPosition, CardObject card, bool rotate = false)
     {
         GameObject newCardSlot = Instantiate(cardSlotPrefab);
         Vector3 newPosition = new Vector3(originalPos.x + XOffset * cardPosition.y, originalPos.y, originalPos.z + ZOffset * cardPosition.x);
@@ -72,6 +72,11 @@ public class SceneStarterController : MonoBehaviour
 
         newCardController.card = card;
         GameController.Instance.AddGameCard(newCardController);
+
+        if(rotate)
+        {
+            newCardObject.GetComponent<RegularCard_AnimationController>().AutoFlip();
+        }
     }
 
 }

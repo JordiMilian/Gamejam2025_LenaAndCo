@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.DebugUI;
 
 public class GameController : MonoBehaviour
 {
@@ -150,6 +151,7 @@ public class GameController : MonoBehaviour
         if (objetoConcha)
         {
             objetoConcha = false;
+            enemyCard.animationController.AttackCardBelow();
         }
         else
         {
@@ -292,6 +294,8 @@ public class GameController : MonoBehaviour
 
         targetCard.DieAnimation();
 
+        yield return new WaitForSeconds(0.5f);
+        Destroy(targetCard.gameObject);
         RemoveGameCard(new Vector2(targetCard.cardPosition.x, i));
     }
     IEnumerator MoveCamera()
@@ -429,7 +433,7 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             Vector2 newPos = new Vector2(shopCard.cardPosition.x + 1, i);
-            SceneStarterController.Instance.AddCard(newPos, randomCards[i]);
+            SceneStarterController.Instance.AddCard(newPos, randomCards[i], isSeal);
         }
     }
 
@@ -551,14 +555,20 @@ public class GameController : MonoBehaviour
 
     private void FrontHunterInteraction(int value, CardController hunterCard)
     {
-        if(isSeal)
+        if (objetoPocion)
         {
-            if(objetoPocion)
-            {
-                objetoPocion = false;
-                return;
-            }
+            objetoPocion = false;
+            return;
+        }
+
+        if (isSeal)
+        {
+
             StartCoroutine(AttackPlayer(value, hunterCard));
+        }
+        else
+        {
+            blockTransform = true;
         }
     }
 
