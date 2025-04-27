@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
 
     #region EFFECT BOOLS
     private bool doubleEnemyDamage = false;
-    private bool blockTransform = false;
+    public bool blockTransform = false;
 
     [SerializeField] private bool objetoAleta, objetoPezDorado, objetoConcha, objetoPocion;
     #endregion
@@ -60,11 +60,6 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         playerCardController.canMove = true;
-    }
-
-    public bool CanTransform()
-    {
-        return !blockTransform;
     }
     public void AddGameCard(CardController newCard)
     {

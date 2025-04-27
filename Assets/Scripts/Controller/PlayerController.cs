@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
     void FlipCard()
     {
-        if (GameController.Instance.CanTransform() == false) return;
+        if (GameController.Instance.blockTransform) return;
 
         Debug.Log("FLIP");
         animationController.FlipCard();
