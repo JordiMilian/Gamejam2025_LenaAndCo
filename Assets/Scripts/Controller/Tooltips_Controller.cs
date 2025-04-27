@@ -24,7 +24,7 @@ public class Tooltips_Controller : MonoBehaviour
     
     public void CheckIfTooltip(CardType cardType)
     {
-        /*
+        
         for (int t = 0; t < cardTypeTooltipsList.Count; t++)
         {
             CardTypeTooltip tooltip = cardTypeTooltipsList[t];
@@ -34,20 +34,14 @@ public class Tooltips_Controller : MonoBehaviour
                 return;
             }
         }
-        foreach (CardTypeTooltip tooltip in cardTypeTooltipsList)
-        {
-            if(tooltip.cardType == cardType && tooltip.hasShown == false)
-            {
-                ShowTooltip(tooltip);
-                return;
-            }
-        }
-        */
     }
-    void ShowTooltip(int indexOfTooltip)
+    public void ShowTooltip(int indexOfTooltip)
     {
-        //cardTypeTooltipsList[2].hasShown = true;
-        //tooltipText.text = tooltip.tooltipText;
+        CardTypeTooltip newCardType = cardTypeTooltipsList[indexOfTooltip];
+        newCardType.hasShown = true;
+        newCardType.tooltipText = cardTypeTooltipsList[indexOfTooltip].tooltipText;
+        cardTypeTooltipsList[indexOfTooltip] = newCardType;
+        tooltipText.text = newCardType.tooltipText;
         rootAnimator.SetTrigger("Appear");
     }
     
