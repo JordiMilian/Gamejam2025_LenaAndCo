@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbf4e38c3eca16d4a9d7fb14bbe85d12, type: 3}
-  m_Name: Ship
+  m_Name: Hunter_4
   m_EditorClassIdentifier: 
-  cardType: 9
-  value: 0
+  cardType: 2
+  value: 2
   visibleValue: 1
-  material: {fileID: -876546973899608171, guid: 1a0f4523e22ee3445892b6c26538af7f, type: 3}
-  audioEffect: {fileID: 8300000, guid: bf7eae5d4e896f347a39fef0ad3cd4f0, type: 3}
+  material: {fileID: 2100000, guid: 5dd2fea775a2bee4bb5f890b1fa01d9f, type: 2}
+  audioEffect: {fileID: 8300000, guid: 6acc2fb50049dad4896f09d9a8df1e6d, type: 3}

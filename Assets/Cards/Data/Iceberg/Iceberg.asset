@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf4e38c3eca16d4a9d7fb14bbe85d12, type: 3}
   m_Name: Iceberg
   m_EditorClassIdentifier: 
-  cardName: Iceberg
   cardType: 8
   value: 0
-  material: {fileID: -876546973899608171, guid: 1a0f4523e22ee3445892b6c26538af7f, type: 3}
+  visibleValue: 1
+  material: {fileID: 2100000, guid: 203a6d59233484c4fb407b2553836076, type: 2}
+  audioEffect: {fileID: 8300000, guid: 735d2a15fe7a8a54eb34a7b2c2f37e41, type: 3}

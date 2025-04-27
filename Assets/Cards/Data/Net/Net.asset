@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 10
   value: 0
-  material: {fileID: -876546973899608171, guid: 1a0f4523e22ee3445892b6c26538af7f, type: 3}
+  visibleValue: 1
+  material: {fileID: 2100000, guid: 222d84438db2ed048a73da13e2a01e21, type: 2}
+  audioEffect: {fileID: 8300000, guid: 0605cec4ba4230340bf8ffbc5802ecde, type: 3}

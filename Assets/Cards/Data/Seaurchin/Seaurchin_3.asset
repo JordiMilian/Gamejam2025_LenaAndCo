@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbf4e38c3eca16d4a9d7fb14bbe85d12, type: 3}
-  m_Name: Ship
+  m_Name: Seaurchin_3
   m_EditorClassIdentifier: 
-  cardType: 9
-  value: 0
-  visibleValue: 1
-  material: {fileID: -876546973899608171, guid: 1a0f4523e22ee3445892b6c26538af7f, type: 3}
-  audioEffect: {fileID: 8300000, guid: bf7eae5d4e896f347a39fef0ad3cd4f0, type: 3}
+  cardType: 7
+  value: 3
+  visibleValue: 0
+  material: {fileID: 2100000, guid: dd68a838dfbce6b41b3567da6b8096b2, type: 2}
+  audioEffect: {fileID: 0}
