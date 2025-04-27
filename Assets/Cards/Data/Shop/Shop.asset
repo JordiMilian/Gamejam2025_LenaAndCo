@@ -16,4 +16,4 @@ MonoBehaviour:
   value: 4
   visibleValue: 1
   material: {fileID: 2100000, guid: a8614e337fee30241b074006c9ff6e61, type: 2}
-  audioEffect: {fileID: 0}
+  audioEffect: {fileID: 8300000, guid: 472e0f09bde09f846ab034f616723833, type: 3}

@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
     public TextMeshPro playerTextInfo;
     public float maxScaleText = 1;
 
+    [SerializeField] AudioClip damageAudio, deathAudio;
     #region EFFECT BOOLS
     private bool doubleEnemyDamage = false;
     public bool blockTransform = false;
@@ -87,6 +88,7 @@ public class GameController : MonoBehaviour
         float duration = 2;
         float elapsed = 0;
 
+        SFX_Player.Instance.playSFX(deathAudio);
         yield return new WaitForSeconds(0.5f);
         playerCardController.animationController.Died();
         yield return new WaitForSeconds(0.5f);
@@ -150,7 +152,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-
+            SFX_Player.Instance.playSFX(damageAudio);
             enemyCard.animationController.AttackCardBelow();
             playerCardController.animationController.Damaged();
 
@@ -177,6 +179,8 @@ public class GameController : MonoBehaviour
             objetoConcha = false;
             return;
         }
+
+        SFX_Player.Instance.playSFX(damageAudio);
         StartCoroutine(ShowTextOnCharacter("-" + value.ToString(), hpColor));
         SetHp(hp - value);
     }
@@ -292,8 +296,11 @@ public class GameController : MonoBehaviour
         targetCard.DieAnimation();
 
         yield return new WaitForSeconds(0.5f);
-        Destroy(targetCard.gameObject);
-        RemoveGameCard(new Vector2(targetCard.cardPosition.x, i));
+        if (targetCard != null)
+        {
+            Destroy(targetCard.gameObject);
+            RemoveGameCard(new Vector2(targetCard.cardPosition.x, i));
+        }
     }
     IEnumerator MoveCamera()
     {
@@ -314,16 +321,16 @@ public class GameController : MonoBehaviour
                 ShopInteraction(targetCard.card.value, targetCard);
                 break;
             case CardType.Fish:
-                FishInteraction(targetCard.card.value);
+                FishInteraction(targetCard.card.value, targetCard);
                 break;
             case CardType.Coin: 
-                CoinInteraction(targetCard.card.value);
+                CoinInteraction(targetCard.card.value, targetCard);
                 break;
             case CardType.Seagull:
-                SeagullInteraction(targetCard.card.value);
+                SeagullInteraction(targetCard.card.value, targetCard);
                 break;
             case CardType.SeaUrchin:
-                SeaUrchinInteraction(targetCard.card.value);
+                SeaUrchinInteraction(targetCard.card.value, targetCard);
                 break;
             case CardType.Iceberg:
                 IcebergInteraction();
@@ -332,13 +339,13 @@ public class GameController : MonoBehaviour
                 ShipInteraction();
                 break;
             case CardType.Net:
-                NetInteraction();
+                NetInteraction(targetCard);
                 break;
             case CardType.Hunter:
-                HunterInteraction(targetCard.card.value);
+                HunterInteraction(targetCard.card.value, targetCard);
                 break;
             case CardType.Whale:
-                WhaleInteraction(targetCard.card.value);
+                WhaleInteraction(targetCard.card.value, targetCard);
                 break;
             case CardType.objetoAleta:
                 objetoAletaInteraction();
@@ -360,6 +367,14 @@ public class GameController : MonoBehaviour
                 break;
         }
 
+        if(targetCard.card.cardType != CardType.Coin &&
+           targetCard.card.cardType != CardType.Fish)
+        {
+            if(targetCard.card.audioEffect != null)
+            {
+                SFX_Player.Instance.playSFX(targetCard.card.audioEffect);
+            }
+        }
         yield return StartCoroutine(HandleFrontCard(targetCard));
         Destroy(targetCard.gameObject);
     }
@@ -478,10 +493,11 @@ public class GameController : MonoBehaviour
             StartCoroutine(CreateShop(false, shopCard));
         }
     }
-    private void FishInteraction(int value)
+    private void FishInteraction(int value, CardController targetCard)
     {
         if (isSeal)
         {
+            SFX_Player.Instance.playSFX(targetCard.card.audioEffect);
             HealPlayer(value);
         }
     }
@@ -496,15 +512,16 @@ public class GameController : MonoBehaviour
             doubleEnemyDamage = true;
         }
     }
-    private void CoinInteraction(int value)
+    private void CoinInteraction(int value, CardController targetCard)
     {
         if (!isSeal)
         {
+            SFX_Player.Instance.playSFX(targetCard.card.audioEffect);
             AddCoinsPlayer(value);
         }
     }
 
-    private void SeaUrchinInteraction(int value)
+    private void SeaUrchinInteraction(int value, CardController targetCard)
     {
         if (isSeal)
         {
@@ -512,7 +529,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void HunterInteraction(int value)
+    private void HunterInteraction(int value, CardController targetCard)
     {
         if (isSeal)
         {
@@ -523,9 +540,10 @@ public class GameController : MonoBehaviour
         {
             blockTransform = true;
         }
+
     }
 
-    private void SeagullInteraction(int value)
+    private void SeagullInteraction(int value, CardController targetCard)
     {
         if (!isSeal)
         {
@@ -533,7 +551,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void WhaleInteraction(int value)
+    private void WhaleInteraction(int value, CardController targetCard)
     {
         if (isSeal)
         {
@@ -543,9 +561,10 @@ public class GameController : MonoBehaviour
         {
             DamagePlayer(value);
         }
+
     }
 
-    private void NetInteraction()
+    private void NetInteraction(CardController targetCard)
     {
         blockTransform = true;
     }
@@ -558,10 +577,12 @@ public class GameController : MonoBehaviour
             return;
         }
 
+        SFX_Player.Instance.playSFX(hunterCard.card.audioEffect);
         if (isSeal)
         {
 
             StartCoroutine(AttackPlayer(value, hunterCard));
+            SFX_Player.Instance.playSFX(hunterCard.card.audioEffect);
         }
         else
         {
@@ -589,7 +610,7 @@ public class GameController : MonoBehaviour
                 return;
             }
 
-            StartCoroutine(KillCardAnimation(fishCard, 1f, (int)fishCard.cardPosition.y));
+        StartCoroutine(KillCardAnimation(fishCard, 1f, (int)fishCard.cardPosition.y));
     }
 
     private void FrontWhaleInteraction(int value, CardController hunterCard)
@@ -600,6 +621,7 @@ public class GameController : MonoBehaviour
             return;
         }
 
+        SFX_Player.Instance.playSFX(hunterCard.card.audioEffect);
         if (isSeal)
         {
             StartCoroutine(AttackPlayer(value * 2, hunterCard));
