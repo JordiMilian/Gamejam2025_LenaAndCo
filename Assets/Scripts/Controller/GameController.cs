@@ -564,8 +564,7 @@ public class GameController : MonoBehaviour
 
     private void FrontFishInteraction(CardController fishCard)
     {
-        if (!isSeal)
-        {
+ 
             if (objetoPocion)
             {
                 objetoPocion = false;
@@ -573,7 +572,6 @@ public class GameController : MonoBehaviour
             }
 
             StartCoroutine(KillCardAnimation(fishCard, 1f, (int)fishCard.cardPosition.y));
-        }
     }
 
     private void FrontWhaleInteraction(int value, CardController hunterCard)
@@ -615,6 +613,9 @@ public class GameController : MonoBehaviour
                     break;
                 case CardType.Whale:
                     FrontWhaleInteraction(frontCard.card.value, frontCard);
+                    break;
+                case CardType.Fish:
+                    FrontFishInteraction(frontCard);
                     break;
                 default:
                     break;
