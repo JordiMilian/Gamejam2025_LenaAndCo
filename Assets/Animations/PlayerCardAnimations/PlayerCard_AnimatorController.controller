@@ -87,8 +87,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Death
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: isFlipped
+  - m_ConditionMode: 2
+    m_ConditionEvent: isHuman
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2705177665982703611}
@@ -140,7 +140,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isFlipped
+    m_ConditionEvent: isHuman
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Flip
@@ -237,7 +237,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isFlipped
+    m_ConditionEvent: isHuman
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Flip_failed
@@ -551,7 +551,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: isFlipped
+  - m_Name: isHuman
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -611,8 +611,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Damaged
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: isFlipped
+  - m_ConditionMode: 2
+    m_ConditionEvent: isHuman
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2993520581822612685}
@@ -817,8 +817,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Damaged
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: isFlipped
+  - m_ConditionMode: 1
+    m_ConditionEvent: isHuman
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1974361421429356094}
@@ -1047,7 +1047,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isFlipped
+    m_ConditionEvent: isHuman
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Flip
@@ -1174,7 +1174,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isFlipped
+    m_ConditionEvent: isHuman
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Flip_failed
@@ -1301,8 +1301,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: isFlipped
+  - m_ConditionMode: 1
+    m_ConditionEvent: isHuman
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Death
