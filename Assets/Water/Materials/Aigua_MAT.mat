@@ -76,18 +76,19 @@ Material:
     - _NoisePower: 4.79
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ScaleNoise: 28.63
+    - _ScaleNoise: 8.1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 0
     - _SrcBlend: 5
+    - _Transparencia: 0.2
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Direction: {r: 0.01, g: 0.03, b: 0.05, a: 0}
+    - _Direction: {r: 0.1, g: 0.3, b: 0.5, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpeedFoam: {r: 0, g: 0, b: 0, a: 0}
-    - _UVScale: {r: 1.7, g: 18.6, b: 12, a: 0}
+    - _UVScale: {r: 1, g: 1, b: 2, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2894333456233639548
 MonoBehaviour:
