@@ -81,7 +81,11 @@ public class PlayerController : MonoBehaviour
 
     void FlipCard()
     {
-        if (GameController.Instance.blockTransform) return;
+        if (GameController.Instance.blockTransform)
+        {
+            animationController.FailedFlip();
+            return;
+        }
         Animator cardanimator = GetComponent<Animator>();
         GameController.Instance.isSeal = !GameController.Instance.isSeal;
         cardanimator.SetBool("isHuman", !GameController.Instance.isSeal);

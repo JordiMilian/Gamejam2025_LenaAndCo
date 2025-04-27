@@ -13,6 +13,10 @@ public class PlayerCard_AnimationController : MonoBehaviour
 
     public void StartFloating() { cardAnimator.SetBool("isFloating", true); }
     public void EndFloating() { cardAnimator.SetBool("isFloating", false); }
+    public void FailedFlip()
+    {
+        cardAnimator.SetTrigger("Flip_failed");
+    }
     public void FlipCard()
     {
         Debug.Log("Flipped");
