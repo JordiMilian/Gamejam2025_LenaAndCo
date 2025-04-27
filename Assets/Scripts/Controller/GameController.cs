@@ -5,8 +5,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using static UnityEngine.Rendering.DebugUI;
-using static UnityEditor.Progress;
 
 public class GameController : MonoBehaviour
 {
@@ -60,6 +58,11 @@ public class GameController : MonoBehaviour
         objetoConcha = false;
         objetoPocion = false;
         itemImage.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
     }
     private void Start()
     {
