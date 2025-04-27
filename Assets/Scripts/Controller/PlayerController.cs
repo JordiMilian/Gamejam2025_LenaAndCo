@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     private void OnMouseDrag()
     {
         if (!canMove) return;
+        animationController.StartFloating();
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
     }
 
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
         {
             ResetPlayer();
         }
+        animationController.EndFloating();
     }
 
     private void OnTriggerEnter(Collider other)

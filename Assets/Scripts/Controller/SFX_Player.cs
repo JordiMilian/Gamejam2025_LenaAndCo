@@ -6,6 +6,7 @@ public class SFX_Player : MonoBehaviour
 {
     List<AudioSource> audioSourcePool = new List<AudioSource>();
     [SerializeField] private int initialPoolSize = 5;
+    [SerializeField] [Range(0, 1)] float Volume;
 
     public static SFX_Player Instance;
     private void Awake()
@@ -46,7 +47,7 @@ public class SFX_Player : MonoBehaviour
 
         float randomAdder = Random.Range(-pitchVariationAdder, pitchVariationAdder);
         audioSource.pitch += randomAdder;
-
+        audioSource.volume = Volume;
         audioSource.clip = clip;
         audioSource.Play();
         //
