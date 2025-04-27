@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
+using static UnityEditor.Progress;
 
 public class GameController : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class GameController : MonoBehaviour
     public TextMeshPro playerTextInfo;
     public float maxScaleText = 1;
 
+    public Image itemImage;
     [SerializeField] AudioClip damageAudio, deathAudio;
     #region EFFECT BOOLS
     private bool doubleEnemyDamage = false;
@@ -57,6 +59,7 @@ public class GameController : MonoBehaviour
         objetoPezDorado = false;
         objetoConcha = false;
         objetoPocion = false;
+        itemImage.gameObject.SetActive(false);
     }
     private void Start()
     {
@@ -148,6 +151,7 @@ public class GameController : MonoBehaviour
         if (objetoConcha)
         {
             objetoConcha = false;
+            itemImage.gameObject.SetActive(false);
             enemyCard.animationController.AttackCardBelow();
         }
         else
@@ -176,6 +180,7 @@ public class GameController : MonoBehaviour
 
         if(objetoConcha)
         {
+            itemImage.gameObject.SetActive(false);
             objetoConcha = false;
             return;
         }
@@ -195,6 +200,7 @@ public class GameController : MonoBehaviour
     {
         if(objetoPezDorado)
         {
+            itemImage.gameObject.SetActive(false);
             objetoPezDorado = false;
             value = value * 2;
         }
@@ -239,6 +245,7 @@ public class GameController : MonoBehaviour
 
         if(playerCardPosition.x + 1 == newTargetCardSlot.x && objetoAleta)
         {
+            itemImage.gameObject.SetActive(false);
             objetoAleta = false;
             return true;
         }
@@ -348,16 +355,16 @@ public class GameController : MonoBehaviour
                 WhaleInteraction(targetCard.card.value, targetCard);
                 break;
             case CardType.objetoAleta:
-                objetoAletaInteraction();
+                objetoAletaInteraction(targetCard);
                 break;
             case CardType.objetoConcha:
-                objetoConchaInteraction();
+                objetoConchaInteraction(targetCard);
                 break;
             case CardType.objetoPezDorado:
-                objetoPezDoradoInteraction();
+                objetoPezDoradoInteraction(targetCard);
                 break;
             case CardType.objetoPocion:
-                objetoPocionInteraction();
+                objetoPocionInteraction(targetCard);
                 break;
             case CardType.FinalBoss:
                 //FinalBossInteraction(targetCard.card.value);
@@ -381,8 +388,11 @@ public class GameController : MonoBehaviour
 
     #region CardInteractions
 
-    private void objetoAletaInteraction()
+    private void objetoAletaInteraction(CardController item)
     {
+        itemImage.gameObject.SetActive(true);
+        itemImage.sprite = item.card.objectImage;
+
         objetoConcha = false;
         objetoPezDorado = false;
         objetoPocion = false;
@@ -391,8 +401,11 @@ public class GameController : MonoBehaviour
         playerCardController.TriggerActionAnimation();
     }
 
-    private void objetoConchaInteraction()
+    private void objetoConchaInteraction(CardController item)
     {
+        itemImage.gameObject.SetActive(true);
+        itemImage.sprite = item.card.objectImage;
+
         objetoConcha = true;
         objetoPezDorado = false;
         objetoPocion = false;
@@ -401,8 +414,11 @@ public class GameController : MonoBehaviour
         playerCardController.TriggerActionAnimation();
     }
 
-    private void objetoPocionInteraction()
+    private void objetoPocionInteraction(CardController item)
     {
+        itemImage.gameObject.SetActive(true);
+        itemImage.sprite = item.card.objectImage;
+
         objetoConcha = false;
         objetoPezDorado = false;
         objetoPocion = true;
@@ -411,8 +427,11 @@ public class GameController : MonoBehaviour
         playerCardController.TriggerActionAnimation();
     }
 
-    private void objetoPezDoradoInteraction()
+    private void objetoPezDoradoInteraction(CardController item)
     {
+        itemImage.gameObject.SetActive(true);
+        itemImage.sprite = item.card.objectImage;
+
         objetoConcha = false;
         objetoPezDorado = true;
         objetoPocion = false;
@@ -573,6 +592,7 @@ public class GameController : MonoBehaviour
     {
         if (objetoPocion)
         {
+            itemImage.gameObject.SetActive(false);
             objetoPocion = false;
             return;
         }
@@ -606,7 +626,8 @@ public class GameController : MonoBehaviour
  
             if (objetoPocion)
             {
-                objetoPocion = false;
+            itemImage.gameObject.SetActive(false);
+            objetoPocion = false;
                 return;
             }
 
@@ -617,6 +638,7 @@ public class GameController : MonoBehaviour
     {
         if (objetoPocion)
         {
+            itemImage.gameObject.SetActive(false);
             objetoPocion = false;
             return;
         }
