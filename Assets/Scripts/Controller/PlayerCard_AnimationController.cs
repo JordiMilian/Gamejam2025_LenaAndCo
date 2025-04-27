@@ -20,7 +20,11 @@ public class PlayerCard_AnimationController : MonoBehaviour
         cardAnimator.SetTrigger("Flip");
     }
     public void Died() { cardAnimator.SetTrigger("Death"); }
-    public void Damaged() {  cardAnimator.SetTrigger("Damaged"); }
+    public void Damaged()
+    { 
+        cardAnimator.SetTrigger("Damaged"); 
+    
+    }
     public void Interact() { cardAnimator.SetTrigger("Interact"); }
     public bool isFlipped() { return cardAnimator.GetBool("isFlipped"); }
 
