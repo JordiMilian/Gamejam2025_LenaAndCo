@@ -255,6 +255,7 @@ public class GameController : MonoBehaviour
             playerCardController.transform.position = targetCard.transform.position;
             playerCardPosition = targetCard.cardPosition;
 
+            blockTransform = false;
             yield return StartCoroutine(MoveCamera());
 
             yield return StartCoroutine(HandleCardInteraction(targetCard));
@@ -451,8 +452,6 @@ public class GameController : MonoBehaviour
 
         // Aseguramos que termina exactamente en la posición objetivo
         card.transform.position = targetPos;
-
-        blockTransform = false;
         // Actualizamos el card después de moverse
         card.cardPosition = new Vector2(card.cardPosition.x + 1, card.cardPosition.y);
         card.name = "Card(" + (card.cardPosition.x).ToString() + "," + (card.cardPosition.y).ToString() + ")";
