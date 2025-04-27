@@ -76,7 +76,7 @@ Material:
     - _NoisePower: 4.79
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ScaleNoise: 5
+    - _ScaleNoise: 28.63
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 0
     - _SrcBlend: 5
@@ -87,7 +87,7 @@ Material:
     - _Direction: {r: 0.01, g: 0.03, b: 0.05, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpeedFoam: {r: 0, g: 0, b: 0, a: 0}
-    - _UVScale: {r: 12, g: 12, b: 12, a: 0}
+    - _UVScale: {r: 1.7, g: 18.6, b: 12, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2894333456233639548
 MonoBehaviour:

@@ -139,11 +139,11 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Flip
-    m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isFlipped
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: Flip
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5159035459851107279}
@@ -237,10 +237,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Flip_failed
+    m_ConditionEvent: isFlipped
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isFlipped
+    m_ConditionEvent: Flip_failed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3834742117098865061}
@@ -949,7 +949,7 @@ AnimatorStateMachine:
     m_Position: {x: 400, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8622655857026782765}
-    m_Position: {x: 110, y: -70, z: 0}
+    m_Position: {x: 120, y: -70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1035629843178520687}
     m_Position: {x: 150, y: 100, z: 0}
@@ -1047,10 +1047,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Flip
+    m_ConditionEvent: isFlipped
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isFlipped
+    m_ConditionEvent: Flip
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8622655857026782765}
@@ -1173,11 +1173,11 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Flip_failed
-    m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isFlipped
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: Flip_failed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8713528555184127312}
