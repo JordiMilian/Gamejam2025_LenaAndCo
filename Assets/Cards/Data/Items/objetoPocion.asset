@@ -15,6 +15,6 @@ MonoBehaviour:
   cardType: 15
   value: 4
   visibleValue: 1
-  material: {fileID: 2100000, guid: 656e0be26755cb14e8940b40f490459a, type: 2}
+  material: {fileID: 2100000, guid: 6795db7a26e74154282a47da0baa0ea1, type: 2}
   audioEffect: {fileID: 8300000, guid: 472e0f09bde09f846ab034f616723833, type: 3}
-  objectImage: {fileID: 21300000, guid: c88e0104591755a47924df76570961eb, type: 3}
+  objectImage: {fileID: 21300000, guid: 47a41cd92c7a3374f8ae5f657037dddb, type: 3}
