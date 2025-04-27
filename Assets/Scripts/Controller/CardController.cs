@@ -16,9 +16,12 @@ public class CardController : MonoBehaviour
 
     public void DieAnimation()
     {
-        animationController.Dissapear();
+        if (animationController != null)
+        {
+            animationController.Dissapear();
 
-        StartCoroutine(DestroyCoroutine());
+            StartCoroutine(DestroyCoroutine());
+        }
     }
 
     IEnumerator DestroyCoroutine()

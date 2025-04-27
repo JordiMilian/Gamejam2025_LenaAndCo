@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbf4e38c3eca16d4a9d7fb14bbe85d12, type: 3}
-  m_Name: Hunter_2
+  m_Name: Fish_2
   m_EditorClassIdentifier: 
-  cardType: 2
+  cardType: 3
   value: 2
   visibleValue: 1
-  material: {fileID: 2100000, guid: 11d2eb11854bf0140971003d057fdba8, type: 2}
+  material: {fileID: 2100000, guid: 2cbf542c164c55747a41c04695fc7728, type: 2}
   audioEffect: {fileID: 0}

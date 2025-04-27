@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf4e38c3eca16d4a9d7fb14bbe85d12, type: 3}
-  m_Name: Hunter_2
+  m_Script: {fileID: 11500000, guid: 8591c74dc74b1344e9850653bc7065f7, type: 3}
+  m_Name: Nivel
   m_EditorClassIdentifier: 
-  cardType: 2
-  value: 2
-  visibleValue: 1
-  material: {fileID: 2100000, guid: 11d2eb11854bf0140971003d057fdba8, type: 2}
-  audioEffect: {fileID: 0}
+  gamePresetName: LNivel Real
+  level:
+  - position:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}

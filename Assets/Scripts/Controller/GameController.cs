@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -26,6 +28,12 @@ public class GameController : MonoBehaviour
 
     public bool isSeal = false;
 
+    [SerializeField] RawImage blackImage;
+
+    [SerializeField] Color hpColor, coinColor;
+    public TextMeshPro playerTextInfo;
+    public float maxScaleText = 1;
+
     #region EFFECT BOOLS
     private bool doubleEnemyDamage = false;
     private bool blockTransform = false;
@@ -39,6 +47,7 @@ public class GameController : MonoBehaviour
 
         doubleEnemyDamage = false;
         blockTransform = false;
+        playerTextInfo.gameObject.SetActive(false);
     }
     private void Start()
     {
@@ -63,10 +72,65 @@ public class GameController : MonoBehaviour
     {
         hp = newHp;
         if(hp > maxHp) hp = maxHp;
+        if (hp <= 0) hp = 0;
 
         hpUI.text = "HP: " + hp.ToString();
+
+        if (hp == 0) StartCoroutine(KillPlayerCoroutine());
     }
 
+    IEnumerator KillPlayerCoroutine()
+    {
+        float duration = 2;
+        float elapsed = 0;
+
+        yield return new WaitForSeconds(0.5f);
+        playerCardController.animationController.Died();
+        yield return new WaitForSeconds(0.5f);
+        while (duration > elapsed) 
+        {
+            yield return null;
+
+            float a = blackImage.color.a;
+
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            float newA = Mathf.Lerp(a, 1, t);
+
+            Color newColor = new Color(blackImage.color.r, blackImage.color.g, blackImage.color.b, newA);
+
+            blackImage.color = newColor;
+        }
+
+        yield return null;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    IEnumerator ShowTextOnCharacter(string text, Color textColor)
+    {
+        playerTextInfo.gameObject.SetActive(true);
+        playerTextInfo.gameObject.transform.localScale = Vector3.zero;
+        playerTextInfo.text = text;
+        playerTextInfo.color = textColor;
+
+        float duration = 1;
+        float elapsed = 0;
+
+        Vector3 localScale = playerTextInfo.transform.localScale;
+        Vector3 targetScale = Vector3.one * maxScaleText;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            playerTextInfo.transform.localScale = Vector3.Lerp(localScale, targetScale, t);
+            yield return null;
+        }
+
+        playerTextInfo.gameObject.SetActive(false);
+
+
+
+    }
     IEnumerator AttackPlayer(int value, CardController enemyCard)
     {
         if (doubleEnemyDamage)
@@ -80,6 +144,8 @@ public class GameController : MonoBehaviour
         playerCardController.animationController.Damaged();
 
         yield return new WaitForSeconds(0.5f);
+        StartCoroutine(ShowTextOnCharacter("-" + value.ToString(), hpColor));
+        Debug.Log("Atacan jugador: " + value.ToString());
         SetHp(hp - value);
         yield return new WaitForSeconds(0.5f);
         Destroy(enemyCard.gameObject);
@@ -93,6 +159,7 @@ public class GameController : MonoBehaviour
 
             doubleEnemyDamage = false;
         }
+        StartCoroutine(ShowTextOnCharacter("-" + value.ToString(), hpColor));
         SetHp(hp - value);
 
         playerCardController.TriggerActionAnimation(); //ESTE EFECTO DE DAÑO DEBERÍA MEJORAR
@@ -101,7 +168,7 @@ public class GameController : MonoBehaviour
     void HealPlayer(int value)
     {
         SetHp(hp + value);
-
+        StartCoroutine(ShowTextOnCharacter("+" + value.ToString(), hpColor));
         playerCardController.TriggerActionAnimation(); //AÑADIR EFECTO CURA
     }
 
@@ -109,13 +176,14 @@ public class GameController : MonoBehaviour
     {
         SetCoin(coins + value);
 
+        StartCoroutine(ShowTextOnCharacter("+" + value.ToString(), coinColor));
         playerCardController.TriggerActionAnimation(); //AÑADIR EFECTO CONSEGUIR DINERO
     }
 
     void RemoveCoinsPlayer(int value)
     {
         SetCoin(coins - value);
-
+        ShowTextOnCharacter("-" + value.ToString(), coinColor);
         playerCardController.TriggerActionAnimation(); //AÑADIR EFECTO QUITAR DINERO
     }
     public void SetCoin(int newCoins)
@@ -183,11 +251,20 @@ public class GameController : MonoBehaviour
 
             if (temp != null)
             {
-                temp.DieAnimation();
-            }
 
-            RemoveGameCard(new Vector2(targetCard.cardPosition.x, i));
+                StartCoroutine(KillCardAnimation(temp, 1f, i));
+            }
         }
+    }
+    IEnumerator KillCardAnimation(CardController targetCard, float maxRandomTime, int i)
+    {
+        float random = Random.Range(0, maxRandomTime);
+
+        yield return new WaitForSeconds(random);
+
+        targetCard.DieAnimation();
+
+        RemoveGameCard(new Vector2(targetCard.cardPosition.x, i));
     }
     IEnumerator MoveCamera()
     {
@@ -357,6 +434,7 @@ public class GameController : MonoBehaviour
     {
         if (isSeal)
         {
+            Debug.Log("Daño hunter: " + value.ToString());
             DamagePlayer(value);
         }
         else
@@ -427,10 +505,10 @@ public class GameController : MonoBehaviour
             switch(frontCard.card.cardType)
             {
                 case CardType.Hunter:
-                    FrontHunterInteraction(targetCard.card.value, frontCard);
+                    FrontHunterInteraction(frontCard.card.value, frontCard);
                     break;
                 case CardType.Whale:
-                    FrontWhaleInteraction(targetCard.card.value, frontCard);
+                    FrontWhaleInteraction(frontCard.card.value, frontCard);
                     break;
                 default:
                     break;
