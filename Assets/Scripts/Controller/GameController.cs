@@ -37,6 +37,8 @@ public class GameController : MonoBehaviour
     #region EFFECT BOOLS
     private bool doubleEnemyDamage = false;
     private bool blockTransform = false;
+
+    [SerializeField] private bool objetoAleta, objetoPezDorado, objetoConcha, objetoPocion;
     #endregion
     private void Awake()
     {
@@ -48,6 +50,11 @@ public class GameController : MonoBehaviour
         doubleEnemyDamage = false;
         blockTransform = false;
         playerTextInfo.gameObject.SetActive(false);
+
+        objetoConcha = false;
+        objetoPezDorado = false;
+        objetoConcha = false;
+        objetoPocion = false;
     }
     private void Start()
     {
@@ -140,15 +147,23 @@ public class GameController : MonoBehaviour
             doubleEnemyDamage = false;
         }
 
-        enemyCard.animationController.AttackCardBelow();
-        playerCardController.animationController.Damaged();
+        if (objetoConcha)
+        {
+            objetoConcha = false;
+        }
+        else
+        {
 
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(ShowTextOnCharacter("-" + value.ToString(), hpColor));
-        Debug.Log("Atacan jugador: " + value.ToString());
-        SetHp(hp - value);
-        yield return new WaitForSeconds(0.5f);
-        Destroy(enemyCard.gameObject);
+            enemyCard.animationController.AttackCardBelow();
+            playerCardController.animationController.Damaged();
+
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(ShowTextOnCharacter("-" + value.ToString(), hpColor));
+            Debug.Log("Atacan jugador: " + value.ToString());
+            SetHp(hp - value);
+            yield return new WaitForSeconds(0.5f);
+            Destroy(enemyCard.gameObject);
+        }
 
     }
     void DamagePlayer(int value)
@@ -159,32 +174,39 @@ public class GameController : MonoBehaviour
 
             doubleEnemyDamage = false;
         }
+
+        if(objetoConcha)
+        {
+            objetoConcha = false;
+            return;
+        }
         StartCoroutine(ShowTextOnCharacter("-" + value.ToString(), hpColor));
         SetHp(hp - value);
-
-        playerCardController.TriggerActionAnimation(); //ESTE EFECTO DE DAÑO DEBERÍA MEJORAR
     }
 
     void HealPlayer(int value)
     {
         SetHp(hp + value);
         StartCoroutine(ShowTextOnCharacter("+" + value.ToString(), hpColor));
-        playerCardController.TriggerActionAnimation(); //AÑADIR EFECTO CURA
     }
 
     void AddCoinsPlayer(int value)
     {
+        if(objetoPezDorado)
+        {
+            objetoPezDorado = false;
+            value = value * 2;
+        }
         SetCoin(coins + value);
 
         StartCoroutine(ShowTextOnCharacter("+" + value.ToString(), coinColor));
-        playerCardController.TriggerActionAnimation(); //AÑADIR EFECTO CONSEGUIR DINERO
     }
 
     void RemoveCoinsPlayer(int value)
     {
         SetCoin(coins - value);
+        if(coins < 0) coins = 0;
         ShowTextOnCharacter("-" + value.ToString(), coinColor);
-        playerCardController.TriggerActionAnimation(); //AÑADIR EFECTO QUITAR DINERO
     }
     public void SetCoin(int newCoins)
     {
@@ -210,6 +232,12 @@ public class GameController : MonoBehaviour
         if ((newTargetCardSlot.x - playerCardPosition.x == 1) &&
             (newTargetCardSlot.y == playerCardPosition.y || newTargetCardSlot.y + 1 == playerCardPosition.y || newTargetCardSlot.y - 1 == playerCardPosition.y))
         {
+            return true;
+        }
+
+        if(playerCardPosition.x + 1 == newTargetCardSlot.x && objetoAleta)
+        {
+            objetoAleta = false;
             return true;
         }
         return false;
@@ -310,6 +338,18 @@ public class GameController : MonoBehaviour
             case CardType.Whale:
                 WhaleInteraction(targetCard.card.value);
                 break;
+            case CardType.objetoAleta:
+                objetoAletaInteraction();
+                break;
+            case CardType.objetoConcha:
+                objetoConchaInteraction();
+                break;
+            case CardType.objetoPezDorado:
+                objetoPezDoradoInteraction();
+                break;
+            case CardType.objetoPocion:
+                objetoPocionInteraction();
+                break;
             case CardType.FinalBoss:
                 //FinalBossInteraction(targetCard.card.value);
                 break;
@@ -323,6 +363,46 @@ public class GameController : MonoBehaviour
     }
 
     #region CardInteractions
+
+    private void objetoAletaInteraction()
+    {
+        objetoConcha = false;
+        objetoPezDorado = false;
+        objetoPocion = false;
+        objetoAleta = true;
+
+        playerCardController.TriggerActionAnimation();
+    }
+
+    private void objetoConchaInteraction()
+    {
+        objetoConcha = true;
+        objetoPezDorado = false;
+        objetoPocion = false;
+        objetoAleta = false;
+
+        playerCardController.TriggerActionAnimation();
+    }
+
+    private void objetoPocionInteraction()
+    {
+        objetoConcha = false;
+        objetoPezDorado = false;
+        objetoPocion = true;
+        objetoAleta = false;
+
+        playerCardController.TriggerActionAnimation();
+    }
+
+    private void objetoPezDoradoInteraction()
+    {
+        objetoConcha = false;
+        objetoPezDorado = true;
+        objetoPocion = false;
+        objetoAleta = false;
+
+        playerCardController.TriggerActionAnimation();
+    }
 
     private IEnumerator CreateShop(bool visibleItems, CardController shopCard)
     {
@@ -344,11 +424,12 @@ public class GameController : MonoBehaviour
         // Esperar a que todas las cartas hayan terminado de moverse
         yield return new WaitUntil(() => movingCards == 0);
 
+        List<CardObject> randomCards = cardObjectsPool.OrderBy(x => Random.value).ToList();
         // Ahora sí, añadimos las nuevas cartas
         for (int i = 0; i < 4; i++)
         {
             Vector2 newPos = new Vector2(shopCard.cardPosition.x + 1, i);
-            SceneStarterController.Instance.AddCard(newPos, cardObjectsPool[0]);
+            SceneStarterController.Instance.AddCard(newPos, randomCards[i]);
         }
     }
 
@@ -472,12 +553,37 @@ public class GameController : MonoBehaviour
     {
         if(isSeal)
         {
+            if(objetoPocion)
+            {
+                objetoPocion = false;
+                return;
+            }
             StartCoroutine(AttackPlayer(value, hunterCard));
+        }
+    }
+
+    private void FrontFishInteraction(CardController fishCard)
+    {
+        if (!isSeal)
+        {
+            if (objetoPocion)
+            {
+                objetoPocion = false;
+                return;
+            }
+
+            StartCoroutine(KillCardAnimation(fishCard, 1f, (int)fishCard.cardPosition.y));
         }
     }
 
     private void FrontWhaleInteraction(int value, CardController hunterCard)
     {
+        if (objetoPocion)
+        {
+            objetoPocion = false;
+            return;
+        }
+
         if (isSeal)
         {
             StartCoroutine(AttackPlayer(value * 2, hunterCard));
