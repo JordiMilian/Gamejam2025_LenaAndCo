@@ -15,6 +15,11 @@ public class RegularCard_AnimationController : MonoBehaviour
         cardAnimator.SetBool("isFlipped", !cardAnimator.GetBool("isFlipped"));
         cardAnimator.SetTrigger("Flip");
     }
+    public void AutoFlip()
+    {
+        cardAnimator.SetBool("isFlipped", true);
+        cardAnimator.SetTrigger("AutoFlip");
+    }
     public void AttackCardBelow() { cardAnimator.SetTrigger("Attack"); }
     public bool isFlipped() { return cardAnimator.GetBool("isFlipped"); }
 

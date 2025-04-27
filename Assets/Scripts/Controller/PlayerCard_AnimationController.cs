@@ -15,6 +15,7 @@ public class PlayerCard_AnimationController : MonoBehaviour
     public void EndFloating() { cardAnimator.SetBool("isFloating", false); }
     public void FlipCard()
     {
+        Debug.Log("Flipped");
         cardAnimator.SetBool("isFlipped", !cardAnimator.GetBool("isFlipped"));
         cardAnimator.SetTrigger("Flip");
     }

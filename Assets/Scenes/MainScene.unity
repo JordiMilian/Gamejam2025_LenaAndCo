@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -186,7 +186,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233839838}
-  m_LocalRotation: {x: 0.6545749, y: -0.0000000032789933, z: 0.0000000028390974, w: 0.7559972}
+  m_LocalRotation: {x: 0.6545749, y: -0.0000000032789862, z: 0.0000000028390903, w: 0.7559972}
   m_LocalPosition: {x: 0, y: 134.34, z: -6.1000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -642,7 +642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1028,7 +1028,7 @@ RectTransform:
   m_GameObject: {fileID: 767880219}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2732499, y: 2.2732499, z: 2.2732499}
+  m_LocalScale: {x: 5.1466374, y: 5.1466374, z: 5.1466374}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1067476768}
@@ -1040,7 +1040,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -83.24249, y: -44.244644}
+  m_AnchoredPosition: {x: -133, y: -68}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &767880221
@@ -1222,7 +1222,7 @@ RectTransform:
   m_GameObject: {fileID: 946680913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.0229, y: 4.0229, z: 4.0229}
+  m_LocalScale: {x: 8.040168, y: 8.040168, z: 8.040168}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 512243770}
@@ -1705,8 +1705,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCardController: {fileID: 1668587318}
   cameraController: {fileID: 233839841}
-  hpUI: {fileID: 0}
-  coinUI: {fileID: 0}
+  hpUI: {fileID: 384854405}
+  coinUI: {fileID: 598096412}
   cardObjectsPool:
   - {fileID: 11400000, guid: d7b29cf795ec1e14eae587287d04865b, type: 2}
   - {fileID: 11400000, guid: d7b29cf795ec1e14eae587287d04865b, type: 2}
@@ -1722,6 +1722,10 @@ MonoBehaviour:
   coinColor: {r: 1, g: 0.8981614, b: 0.0047169924, a: 1}
   playerTextInfo: {fileID: 1584131721}
   maxScaleText: 1
+  objetoAleta: 0
+  objetoPezDorado: 0
+  objetoConcha: 0
+  objetoPocion: 0
 --- !u!4 &1115916033
 Transform:
   m_ObjectHideFlags: 0
@@ -2101,7 +2105,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553410276}
-  m_LocalRotation: {x: 0.6545749, y: -0.0000000032789933, z: 0.0000000028390974, w: 0.7559972}
+  m_LocalRotation: {x: 0.6545749, y: -0.0000000032789862, z: 0.0000000028390903, w: 0.7559972}
   m_LocalPosition: {x: 0, y: 134.34, z: -6.1000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2257,7 +2261,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 986502915975703761, guid: f3fa64cdf5431634887d42d09cb1679a, type: 3}
       propertyPath: m_Name
-      value: PlayerPrefab
+      value: a
       objectReference: {fileID: 0}
     - target: {fileID: 4225668054346697499, guid: f3fa64cdf5431634887d42d09cb1679a, type: 3}
       propertyPath: m_RootOrder
