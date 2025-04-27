@@ -82,10 +82,11 @@ public class PlayerController : MonoBehaviour
     void FlipCard()
     {
         if (GameController.Instance.blockTransform) return;
-
-        Debug.Log("FLIP");
-        animationController.FlipCard();
+        Animator cardanimator = GetComponent<Animator>();
         GameController.Instance.isSeal = !GameController.Instance.isSeal;
+        cardanimator.SetBool("isFlipped", !GameController.Instance.isSeal);
+        Debug.Log("FLIP" + GameController.Instance.isSeal);
+        animationController.FlipCard();
 
         StartCoroutine(CantMoveFor(1));
     }

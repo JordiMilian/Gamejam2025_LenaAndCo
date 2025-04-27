@@ -16,7 +16,7 @@ public class PlayerCard_AnimationController : MonoBehaviour
     public void FlipCard()
     {
         Debug.Log("Flipped");
-        cardAnimator.SetBool("isFlipped", !cardAnimator.GetBool("isFlipped"));
+       //cardAnimator.SetBool("isFlipped", !cardAnimator.GetBool("isFlipped"));
         cardAnimator.SetTrigger("Flip");
     }
     public void Died() { cardAnimator.SetTrigger("Death"); }
