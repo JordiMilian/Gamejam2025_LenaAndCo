@@ -306,6 +306,7 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("La carta a la que hemos ido es: " + targetCard.card.cardType.ToString());
 
+        Tooltips_Controller.Instance.CheckIfTooltip(targetCard.card.cardType);
         yield return null;
         switch (targetCard.card.cardType)
         {
