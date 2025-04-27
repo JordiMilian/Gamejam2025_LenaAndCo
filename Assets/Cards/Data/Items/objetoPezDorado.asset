@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf4e38c3eca16d4a9d7fb14bbe85d12, type: 3}
   m_Name: objetoPezDorado
   m_EditorClassIdentifier: 
-  cardType: 13
+  cardType: 16
   value: 3
   visibleValue: 1
   material: {fileID: 2100000, guid: aca2568baab6ca441a3fe903f269e641, type: 2}

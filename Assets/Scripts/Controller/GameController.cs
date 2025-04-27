@@ -68,6 +68,31 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         playerCardController.canMove = true;
+
+        StartCoroutine(StartScene());
+    }
+
+    IEnumerator StartScene()
+    {
+        float duration = 1;
+        float elapsed = 0;
+
+        Color newColor = new Color(blackImage.color.r, blackImage.color.g, blackImage.color.b, 1);
+        blackImage.color = newColor;
+        while (duration > elapsed)
+        {
+            yield return null;
+
+            float a = blackImage.color.a;
+
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            float newA = Mathf.Lerp(a, 0, t);
+
+            newColor = new Color(blackImage.color.r, blackImage.color.g, blackImage.color.b, newA);
+
+            blackImage.color = newColor;
+        }
     }
     public void AddGameCard(CardController newCard)
     {
