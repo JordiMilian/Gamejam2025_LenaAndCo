@@ -452,6 +452,7 @@ public class GameController : MonoBehaviour
         // Aseguramos que termina exactamente en la posición objetivo
         card.transform.position = targetPos;
 
+        blockTransform = false;
         // Actualizamos el card después de moverse
         card.cardPosition = new Vector2(card.cardPosition.x + 1, card.cardPosition.y);
         card.name = "Card(" + (card.cardPosition.x).ToString() + "," + (card.cardPosition.y).ToString() + ")";
@@ -632,7 +633,6 @@ public class GameController : MonoBehaviour
 
     void EndRound()
     {
-        blockTransform = false;
         playerCardController.canMove = true;
     }
 }
