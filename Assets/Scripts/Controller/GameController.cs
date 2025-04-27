@@ -209,6 +209,7 @@ public class GameController : MonoBehaviour
     {
         coins = newCoins;
 
+        if (coins < 0) coins = 0;
         coinUI.text = "Coins: " + coins.ToString();
     }
 
