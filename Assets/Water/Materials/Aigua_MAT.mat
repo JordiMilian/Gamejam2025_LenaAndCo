@@ -73,9 +73,10 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _Mode: 2
+    - _NoisePower: 4.79
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ScaleNoise: 100
+    - _ScaleNoise: 5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 0
     - _SrcBlend: 5
@@ -86,6 +87,7 @@ Material:
     - _Direction: {r: 0.01, g: 0.03, b: 0.05, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpeedFoam: {r: 0, g: 0, b: 0, a: 0}
+    - _UVScale: {r: 12, g: 12, b: 12, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2894333456233639548
 MonoBehaviour:
