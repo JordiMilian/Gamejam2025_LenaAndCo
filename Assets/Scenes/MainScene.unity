@@ -186,7 +186,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233839838}
-  m_LocalRotation: {x: 0.6545749, y: -0.0000000032789862, z: 0.0000000028390903, w: 0.7559972}
+  m_LocalRotation: {x: 0.6545748, y: 0.00000004190111, z: -0.00000003627978, w: 0.75599724}
   m_LocalPosition: {x: 0, y: 134.34, z: -6.1000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2160,6 +2160,8 @@ MonoBehaviour:
   coinColor: {r: 0.509434, g: 0.4504921, b: 0.30037382, a: 1}
   playerTextInfo: {fileID: 1584131721}
   maxScaleText: 1.5
+  damageAudio: {fileID: 8300000, guid: 0e27018895729424db70ce9c38404762, type: 3}
+  deathAudio: {fileID: 8300000, guid: 50e490b15ff317945b4276272c072a69, type: 3}
   blockTransform: 0
   objetoAleta: 0
   objetoPezDorado: 0
@@ -2545,7 +2547,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553410276}
-  m_LocalRotation: {x: 0.6545749, y: -0.0000000032789862, z: 0.0000000028390903, w: 0.7559972}
+  m_LocalRotation: {x: 0.6545748, y: 0.00000004190111, z: -0.00000003627978, w: 0.75599724}
   m_LocalPosition: {x: 0, y: 134.34, z: -6.1000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
