@@ -321,7 +321,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233839838}
-  m_LocalRotation: {x: 0.6545749, y: -0.0000000032789933, z: 0.0000000028390974, w: 0.7559972}
+  m_LocalRotation: {x: 0.6545748, y: 0.00000004190111, z: -0.00000003627978, w: 0.75599724}
   m_LocalPosition: {x: 0, y: 134.34, z: -6.1000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1433,13 +1433,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee71b8f6432ac3409a209a3e97fbd7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rootAnimator: {fileID: 1187760938}
-  tooltipText: {fileID: 1020916728}
+  rootAnimator: {fileID: 0}
+  tooltipText: {fileID: 0}
   cardTypeTooltipsList:
-  - tooltipText: 
+  - tooltipText: "En forma <b>humana</b>, l'Isla recull les monedes, per\xF2 en la
+      seva forma <b>foca</b>, les perd. "
+    cardType: 4
+    hasShown: 0
+  - tooltipText: "L'Isla es menja els peixos nom\xE9s en forma <b>foca</b> per recuperar
+      vida, per\xF2 si t'apropes per davant marxaran abans d'atrapar-los. "
+    cardType: 3
+    hasShown: 0
+  - tooltipText: "A la botiga pots gastar les <b>monedes</b> per aconseguir m\xE9s
+      armadura."
+    cardType: 5
+    hasShown: 0
+  - tooltipText: "Vigila, els <b>ca\xE7adors</b> intentaran atacar-te en forma de
+      <b>foca</b> si entres a la seva cel\xB7la o vas al davant. Si ets <b>humana</b>
+      haur\xE0s de passar inadvertida i no podr\xE0s canviar de forma <b>un torn</b>."
     cardType: 2
     hasShown: 0
-  - tooltipText: 
+  - tooltipText: "La gavina atacar\xE0 a l'Isla per robar-li les <b>monedes</b>,
+      si est\xE0s en forma foca fallar\xE0. "
+    cardType: 6
+    hasShown: 0
+  - tooltipText: "No deixis que l'orca t'ataqui quan est\xE0s en forma de <b>foca</b>
+      si no vols rebre el doble de mal. "
+    cardType: 11
+    hasShown: 0
+  - tooltipText: "La xarxa no et deixar\xE0 transformar-te durant <b>un torn</b>."
+    cardType: 10
+    hasShown: 0
+  - tooltipText: "Passa per sota de l'iceberg en forma de <b>foca</b> o pasa per
+      damunt i perd algunes <b>monedes</b> i <b>peixos</b> a les seg\xFCents fileres."
+    cardType: 8
+    hasShown: 0
+  - tooltipText: "La barca deixar\xE0 visible a l'Isla en forma <b>foca</b> i rebr\xE0
+      el <b>doble</b> de mal al seg\xFCent combat."
     cardType: 9
     hasShown: 0
 --- !u!95 &1187760938
@@ -1725,7 +1755,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553410276}
-  m_LocalRotation: {x: 0.6545749, y: -0.0000000032789933, z: 0.0000000028390974, w: 0.7559972}
+  m_LocalRotation: {x: 0.6545748, y: 0.00000004190111, z: -0.00000003627978, w: 0.75599724}
   m_LocalPosition: {x: 0, y: 134.34, z: -6.1000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1808,6 +1838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialPoolSize: 5
+  Volume: 0
 --- !u!4 &1604765036
 Transform:
   m_ObjectHideFlags: 0
