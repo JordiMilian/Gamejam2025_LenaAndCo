@@ -24,7 +24,6 @@ public class Tooltips_Controller : MonoBehaviour
     
     public void CheckIfTooltip(CardType cardType)
     {
-        
         for (int t = 0; t < cardTypeTooltipsList.Count; t++)
         {
             CardTypeTooltip tooltip = cardTypeTooltipsList[t];
@@ -44,5 +43,6 @@ public class Tooltips_Controller : MonoBehaviour
         tooltipText.text = newCardType.tooltipText;
         rootAnimator.SetTrigger("Appear");
     }
-    
+
+
 }

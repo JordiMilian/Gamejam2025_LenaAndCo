@@ -36,6 +36,7 @@ public class GameController : MonoBehaviour
 
     public Image itemImage;
     [SerializeField] AudioClip damageAudio, deathAudio;
+    [SerializeField] int FinalBossIndex;
     #region EFFECT BOOLS
     private bool doubleEnemyDamage = false;
     public bool blockTransform = false;
@@ -302,11 +303,22 @@ public class GameController : MonoBehaviour
             yield return StartCoroutine(HandleCardInteraction(targetCard));
 
             DestroyNeighbourCards(targetCard);
+            CheckIfFinalBoss(targetCard);
         }
         else
         {
             playerCardController.transform.position = playerCardController.currentPosition;
             playerCardController.canMove = true;
+        }
+
+        //
+        void CheckIfFinalBoss(CardController targetCard)
+        {
+            Debug.Log($"This card position is: {targetCard.cardPosition}");
+            if (targetCard.cardPosition.x == FinalBossIndex && hp > 0)
+            {
+                SceneManager.LoadScene("WinningScreen");
+            }
         }
     }
     void DestroyNeighbourCards(CardController targetCard)
@@ -331,7 +343,7 @@ public class GameController : MonoBehaviour
 
         targetCard.DieAnimation();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         if (targetCard != null)
         {
             Destroy(targetCard.gameObject);
@@ -349,7 +361,7 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("La carta a la que hemos ido es: " + targetCard.card.cardType.ToString());
 
-        Tooltips_Controller.Instance.CheckIfTooltip(targetCard.card.cardType);
+        //Tooltips_Controller.Instance.CheckIfTooltip(targetCard.card.cardType);
         yield return null;
         switch (targetCard.card.cardType)
         {
@@ -496,6 +508,7 @@ public class GameController : MonoBehaviour
             Vector2 newPos = new Vector2(shopCard.cardPosition.x + 1, i);
             SceneStarterController.Instance.AddCard(newPos, randomCards[i], isSeal);
         }
+        FinalBossIndex++;
     }
 
     // Corrutina que mueve una carta y avisa al terminar
