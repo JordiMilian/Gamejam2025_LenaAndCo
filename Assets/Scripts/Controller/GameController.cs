@@ -111,7 +111,7 @@ public class GameController : MonoBehaviour
         if(hp > maxHp) hp = maxHp;
         if (hp <= 0) hp = 0;
 
-        hpUI.text = "HP: " + hp.ToString();
+        hpUI.text = "HP: " + hp.ToString() + "/" + maxHp.ToString();
 
         if (hp == 0) StartCoroutine(KillPlayerCoroutine());
     }
