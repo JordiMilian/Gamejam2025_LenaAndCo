@@ -23,9 +23,9 @@ public class Toottips_mouseController : MonoBehaviour
     {
         rootAnimator.transform.position = Input.mousePosition;
 
-        if (playerController.targetCard != null)
+        if (playerController.targetCard != null && !playerController.targetCard.isHidden)
         {
-            for (int t = 0; t < cardTypeTooltipsList.Count; t++)
+            for (int t = 0; t < cardTypeTooltipsList.Count; t++) //go thorw all the tooltips list, if it matches, show?
             {
                 CardTypeTooltip tooltip = cardTypeTooltipsList[t];
                 if (tooltip.cardType == playerController.targetCard.card.cardType)

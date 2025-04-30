@@ -8,6 +8,7 @@ public class CardController : MonoBehaviour
 
     public RegularCard_AnimationController animationController;
     public Vector2 cardPosition;
+    public bool isHidden = false;
     private void Start()
     {
         if (card.cardType == CardType.Null) Destroy(this);

@@ -75,6 +75,7 @@ public class SceneStarterController : MonoBehaviour
 
         if(rotate)
         {
+            newCardController.isHidden = true;
             newCardObject.GetComponent<RegularCard_AnimationController>().AutoFlip();
         }
     }
